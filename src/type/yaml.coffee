@@ -6,23 +6,24 @@
 # -------------------------------------------------
 
 # include base modules
-vm = require 'vm'
+yaml = require 'js-yaml'
 
 
 # object -> string
 # -------------------------------------------------
 exports.format = (obj, options, cb) ->
-  # default settings
-  options ?=
-    indent: 2
-  cb null, JSON.stringify obj, null, options?.indent
 
 
 # string -> object
 # -------------------------------------------------
 exports.parse = (text, cb) ->
   try
-    result = vm.runInNewContext "x=#{text}"
+    result = yaml.safeLoad text
   catch error
-    return cb error
+    error.message = error.message.replace 'JS-YAML: ', ''
+    return cb new Error(
+      error.message
+      .replace 'JS-YAML: ', ''
+      .replace /[\s^]+/g, ' '
+    )
   cb null, result

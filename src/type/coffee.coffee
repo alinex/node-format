@@ -6,23 +6,21 @@
 # -------------------------------------------------
 
 # include base modules
-vm = require 'vm'
+coffee = require 'coffee-script'
 
 
 # object -> string
 # -------------------------------------------------
 exports.format = (obj, options, cb) ->
-  # default settings
-  options ?=
-    indent: 2
-  cb null, JSON.stringify obj, null, options?.indent
 
 
 # string -> object
 # -------------------------------------------------
 exports.parse = (text, cb) ->
   try
-    result = vm.runInNewContext "x=#{text}"
+    text = "module.exports =\n  " + text.replace /\n/g, '\n  '
+    m = new module.constructor()
+    m._compile coffee.compile(text), 'object.cson'
   catch error
     return cb error
-  cb null, result
+  cb null, m.exports

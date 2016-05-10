@@ -10,6 +10,7 @@ exports.format = (obj, options, cb) ->
     indent: 2
   cb null, JSON.stringify obj, null, options?.indent
 
+
 # string -> object
 # -------------------------------------------------
 exports.parse = (text, cb) ->
