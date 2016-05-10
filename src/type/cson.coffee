@@ -6,26 +6,23 @@
 # -------------------------------------------------
 
 # include base modules
-js2coffee = null # load on demand
-coffee = null # load on demand
+CSON = require 'cson-parser'
 
 
 # object -> string
 # -------------------------------------------------
-exports.format = (obj, _, cb) ->
-  js2coffee ?= require 'js2coffee'
-  cb null, js2coffee.build("(#{JSON.stringify obj})").code\
-  .replace /(^|\n\s*)'([a-zA-Z0-9]+)':/g, '$1$2:'
+exports.format = (obj, options, cb) ->
+  # default settings
+  options ?=
+    indent: 2
+  cb null, CSON.stringify obj, null, options?.indent
 
 
 # string -> object
 # -------------------------------------------------
 exports.parse = (text, cb) ->
-  coffee ?= require 'coffee-script'
   try
-    text = "module.exports =\n  " + text.replace /\n/g, '\n  '
-    m = new module.constructor()
-    m._compile coffee.compile(text), 'object.cson'
+    result = CSON.parse text
   catch error
     return cb error
-  cb null, m.exports
+  cb null, result

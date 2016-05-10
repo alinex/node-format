@@ -91,6 +91,7 @@ The following table will give a short comparison.
 |:--------|:--------:|:--------:|:------:|:----:|:----:|
 | JSON    |   ++     |    no    |   yes  | yes  |  no  |
 | JS      |   ++     |   yes    |   yes  | yes  | yes  |
+| CSON    |   +++    |   yes    |   yes  | yes  |  no  |
 
 Comments may be allowed but theiy get lost on reading and neither will be written.
 
@@ -98,22 +99,6 @@ See details for each format below.
 
 Some of the formats support comments but they won't read or write them, they
 only will allow them to be there in the file.
-
-
-
-|   Format    | YAML | XML | JSON |  JS | CSON | INI | PROP | RDBMS | ObjDB |
-|:------------|-----:|----:|-----:|----:|-----:|----:|-----:|------:|------:|
-| Supported   |  yes | yes |  yes | yes |  yes | yes |  yes |    no |    no |
-| Comments    |  yes | yes | (yes)| yes |  yes | yes |  yes |   yes | (yes) |
-| Structure   |  yes | yes |  yes | yes |  yes | yes |  yes |   yes |   yes |
-| Arrays      |  yes | yes |  yes | yes |  yes | yes |   no |   yes |   yes |
-| Reloadable  |  yes | yes |  yes | yes |  yes | yes |  yes | (yes) | (yes) |
-| Readiness   |  +++ |   - |   ++ |  ++ |  +++ |   + |    + |     + |    ++ |
-| Calculations|   no |  no |   no | yes |  yes |  no |   no |    no |    no |
-| Performance |   ++ |   + |  +++ | +++ |   ++ |  ++ |    + |     - |     + |
-| Common      |   ++ |   + |   ++ |  -- |  --- | +++ |  +++ |     - |    -- |
-
-
 
 ### JSON
 
@@ -206,7 +191,41 @@ Common file extension `js`.
 }
 ```
 
-The `format` method is equal to JSON, which is also valid javascript.
+__Format Options:__
+
+- `indent` - number of spaces or text to indent each level (defaults to 2 spaces)
+
+### CSON
+
+Like JSON but here the object is defined using CoffeeScript instead of javascript.
+
+Common file extension `cson`.
+
+``` coffee
+null: null
+boolean: true
+# include a string
+string: 'test'
+number: 5.6
+date: '2016-05-10T19:06:36.909Z'
+# and a list of numbers
+list: [
+  1
+  2
+  3
+]
+# add a sub object
+person:
+  name: 'Alexander Schilling'
+  job: 'Developer'
+```
+
+__Format Options:__
+
+- `indent` - number of spaces or text to indent each level (defaults to 2 spaces)
+
+
+
 
 
 
@@ -252,33 +271,6 @@ person:
   job: Developer
 ```
 
-
-### CSON
-
-Like above you may write the modules in CoffeeScript like in JSON.
-
-Common file extension `cson`.
-
-``` coffee
-# include a string
-string: "test"
-
-# and a list of numbers
-list: [
-  1
-  2
-  3
-]
-
-# add a sub object
-person:
-  name: "Alexander Schilling"
-  job: "Developer"
-
-# calculate session timeout in milliseconds
-session: 15*60*1000
-calc: Math.sqrt 16
-```
 
 ### XML
 
