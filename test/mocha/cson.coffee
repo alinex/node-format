@@ -7,10 +7,10 @@ chalk = require 'chalk'
 
 formatter = require '../../src/index'
 
-describe "JSON", ->
+describe "CSON", ->
 
-  file = __dirname + '/../data/format.json'
-  format = 'json'
+  file = __dirname + '/../data/format.cson'
+  format = 'cson'
   example = fs.readFileSync file, 'UTF8'
   data =
     null: null
@@ -47,17 +47,6 @@ describe "JSON", ->
 
     it "should reread object", (cb) ->
       formatter.format data, format, (err, text) ->
-        expect(err, 'error').to.not.exist
-        expect(typeof text, 'type of result').to.equal 'string'
-        debug "result", chalk.grey text
-        formatter.parse text, 'json', (err, obj) ->
-          expect(obj, 'reread object').to.deep.equal data
-          cb()
-
-    it "should format with indent", (cb) ->
-      formatter.format data, 'json',
-        indent: 0
-      , (err, text) ->
         expect(err, 'error').to.not.exist
         expect(typeof text, 'type of result').to.equal 'string'
         debug "result", chalk.grey text

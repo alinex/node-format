@@ -7,9 +7,10 @@ chalk = require 'chalk'
 
 formatter = require '../../src/index'
 
-describe.only "JavaScript", ->
+describe "JavaScript", ->
 
   file = __dirname + '/../data/format.js'
+  format = 'js'
   example = fs.readFileSync file, 'UTF8'
   data =
     null: null
@@ -27,7 +28,7 @@ describe.only "JavaScript", ->
   describe "parse preset file", ->
 
     it "should get object", (cb) ->
-      formatter.parse example, 'json', (err, obj) ->
+      formatter.parse example, format, (err, obj) ->
         expect(err, 'error').to.not.exist
         expect(obj, 'object').to.deep.equal data
         cb()
@@ -47,7 +48,7 @@ describe.only "JavaScript", ->
   describe "format and parse", ->
 
     it "should reread object", (cb) ->
-      formatter.format data, 'json', (err, text) ->
+      formatter.format data, format, (err, text) ->
         expect(err, 'error').to.not.exist
         expect(typeof text, 'type of result').to.equal 'string'
         debug "result", chalk.grey text
