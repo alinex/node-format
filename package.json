@@ -1,15 +1,25 @@
 {
-  "name": "",
+  "name": "alinex-formatter",
   "version": "0.0.0",
-  "description": "",
-  "copyright": "undefined 2016",
-  "keywords": [],
-  "homepage": "",
+  "description": "Parse and format multiple data serialization types.",
+  "copyright": "Alexander Schilling 2016",
+  "keywords": [
+    "serialization",
+    "xml",
+    "json",
+    "bson",
+    "cson",
+    "yaml",
+    "csv",
+    "properties",
+    "ini"
+  ],
+  "homepage": "http://alinex.github.io/node-builder",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/alinex/node-builder"
   },
-  "bugs": "",
+  "bugs": "https://github.com/alinex/node-builder/issues",
   "author": {
     "name": "Alexander Schilling",
     "email": "info@alinex.de",
@@ -17,7 +27,6 @@
   },
   "contributors": [],
   "license": "Apache-2.0",
-  "bin": {},
   "scripts": {
     "prepublish": "node_modules/.bin/builder compile --uglify",
     "test": "node_modules/.bin/builder test",
@@ -28,6 +37,7 @@
   },
   "dependencies": {
     "alinex-util": "^2.0.3",
+    "async": "^2.0.0-rc.4",
     "chalk": "^1.1.3",
     "debug": "^2.2.0"
   },
