@@ -3,6 +3,7 @@
   "boolean": true,
   "string": "test",
   "number": 5.6,
+  "date": "2016-05-10T19:06:36.909Z",
   "list": [1, 2, 3],
   "person": {
     "name": "Alexander Schilling",

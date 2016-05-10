@@ -87,14 +87,17 @@ This configuration class allows multiple formats to be used.
 
 The following table will give a short comparison.
 
-|  Format | Readable | Comments | Arrays | Deep | Calculations |
-|:--------|:--------:|:--------:|:------:|:----:|:------------:|
-| JSON    |   ++     |    no    |   yes  | yes  |     no       |
-| JS      |   ++     |    yes   |   yes  | yes  |     yes      |
+|  Format | Readable | Comments | Arrays | Deep | Calc |
+|:--------|:--------:|:--------:|:------:|:----:|:----:|
+| JSON    |   ++     |    no    |   yes  | yes  |  no  |
+| JS      |   ++     |   yes    |   yes  | yes  | yes  |
 
 Comments may be allowed but theiy get lost on reading and neither will be written.
 
 See details for each format below.
+
+Some of the formats support comments but they won't read or write them, they
+only will allow them to be there in the file.
 
 
 
@@ -126,6 +129,7 @@ Common file extension `json`.
   "boolean": true,
   "string": "test",
   "number": 5.6,
+  "date": "2016-05-10T19:06:36.909Z",
   "list": [1, 2, 3],
   "person": {
     "name": "Alexander Schilling",
@@ -147,6 +151,7 @@ JSON's basic data types are:
   Objects are delimited with curly brackets and use commas to separate each pair,
   while within each pair the colon ':' character separates the key or name from
   its value.
+- Date: will be formatted as ISO string and stay as string after parsing
 - null: An empty value, using the word null
 
 Whitespace (space, horizontal tab, line feed, and carriage return) is allowed
@@ -163,8 +168,45 @@ __Format Options:__
 With `indent: 0` the above example would look like:
 
 ``` json
-{"null":null,"boolean":true,"string":"test","number":5.6,"list":[1,2,3],"person":{"name":"Alexander Schilling","job":"Developer"}}
+{"null":null,"boolean":true,"string":"test","number":5.6,"date":"2016-05-10T19:06:36.909Z","list":[1,2,3],"person":{"name":"Alexander Schilling","job":"Developer"}}
 ```
+
+### JavaScript
+
+Also allowed are normal JavaScript files. In comparison to the JSON format it
+is more loosely so you may use single quotes, keys don't need quotes at all and
+at last you may use calculations. But you may only access elements in the same
+file accessing data from outside is prevented by security.
+
+Common file extension `js`.
+
+``` javascript
+// use an object
+{
+  // null value
+  null: null,
+  // boolean setting
+  boolean: true,
+  // include a string
+  string: 'test',
+  // any integer or float number
+  number: 5.6,
+  // a date as string
+  date: "2016-05-10T19:06:36.909Z",
+  // and a list of numbers
+  list: [1, 2, 3],
+  // add a sub object
+  person: {
+    name: "Alexander Schilling",
+    job: "Developer"
+  },
+  // calculate session timeout in milliseconds
+  calc: 15*60*1000,
+  math: Math.sqrt(16)
+}
+```
+
+The `format` method is equal to JSON, which is also valid javascript.
 
 
 
@@ -210,34 +252,6 @@ person:
   job: Developer
 ```
 
-### JavaScript
-
-Also allowed are normal JavaScript files. In comparison to the JSON format it
-is more loosely so you may use single quotes, keys don't need quotes at all and
-at last you may use calculations. But you may only access elements in the same
-file accessing data from outside is prevented by security.
-
-Common file extension `js`.
-
-``` javascript
-{
-  // include a string
-  string: "test",
-
-  // and a list of numbers
-  list: [1, 2, 3],
-
-  // add a sub object
-  person: {
-    name: "Alexander Schilling",
-    job: "Developer"
-  },
-
-  // calculate session timeout in milliseconds
-  session: 15*60*1000,
-  calc: Math.sqrt(16)
-}
-```
 
 ### CSON
 

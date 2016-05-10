@@ -7,9 +7,9 @@ chalk = require 'chalk'
 
 formatter = require '../../src/index'
 
-describe "JSON", ->
+describe.only "JavaScript", ->
 
-  file = __dirname + '/../data/format.json'
+  file = __dirname + '/../data/format.js'
   example = fs.readFileSync file, 'UTF8'
   data =
     null: null
@@ -21,6 +21,8 @@ describe "JSON", ->
     person:
       name: "Alexander Schilling"
       job: "Developer"
+    calc: 900000
+    math: 4
 
   describe "parse preset file", ->
 
