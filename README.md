@@ -407,6 +407,11 @@ See the example above.
 
 
 
+
+
+
+
+
 ### XML
 
 The XML format should only use Tags and values, but no arguments.
@@ -414,32 +419,6 @@ The XML format should only use Tags and values, but no arguments.
 Common file extension `xml`.
 
 ``` xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<!-- use an object -->
-<xml>
-
-  <!-- include a string -->
-  <name>test</name>
-
-  <!-- and a list of numbers -->
-  <list>1</list>
-  <list>2</list>
-  <list>3</list>
-
-  <!-- sub object -->
-  <person>
-    <name>Alexander Schilling</name><job>Developer</job>
-  </person>
-
-  <!-- cdata section -->
-  <cdata><![CDATA[i\'m not escaped: <xml>!]]></cdata>
-
-  <!-- using attributes -->
-  <attributes type="detail">
-    Hello all together
-  </attributes>
-
-</xml>
 ```
 
 ### INI
@@ -450,19 +429,6 @@ allows also complex objects through extended groups.
 Common file extension `ini`.
 
 ``` ini
-; put everything in a main group
-[ini]
-string = test
-
-; add a simple list
-list[] = 1
-list[] = 2
-list[] = 3
-
-; add a sub object
-[ini.person]
-name = Alexander Schilling
-job = Developer
 ```
 
 ### PROPERTIES
@@ -471,17 +437,6 @@ Mainly in the Java world properties are used to setup configuration values.
 But it won't have support for arrays, you only may use objects with numbered keys.
 
 ``` properties
-# put everything in a main group
-prop.string = test
-
-! add a simple list
-prop.list.1 = 1
-prop.list.2 = 2
-prop.list.3 = 3
-
-! add a sub object
-prop.person.name : Alexander Schilling
-prop.person.job: Developer
 ```
 
 
