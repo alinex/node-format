@@ -120,6 +120,6 @@ exports.parse = (text, format, cb) ->
   , (err, result) ->
     return cb err if err
     if result and obj
-      debug chalk.grey "result:\n#{util.inspect obj, {depth:null}}"
+      debug chalk.grey "result:\n#{util.inspect obj, {depth: null}}"
       return cb null, obj
     cb new Error "Could not parse from #{format ? 'unknown'}:\n#{errors.join '\n'}"
