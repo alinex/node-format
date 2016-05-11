@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>README.md</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = "README.md";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /></head>
+<body>
+  <nav>
+<div class="logo"><a href="http://alinex.github.io"
+  onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'"
+  onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png"
+    width="150" title="Alinex Universe Homepage" />
+  </a>
+  <img src="http://alinex.github.io/images/Alinex-200.png"
+    style="display:none" alt="preloading" />
+</div>
+<div class="links">
+  <a href="http://alinex.github.io/blog"
+    class="btn btn-primary"><span class="glyphicon-pencil"></span> Blog</a>
+  <a href="http://alinex.github.io/develop"
+    class="btn btn-primary"><span class="glyphicon-book"></span> Develop</a>
+  <a href="http://alinex.github.io/code.html"
+    class="btn btn-warning"><span class="glyphicon-cog"></span> Code</a>
+</div>
+</nav><div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+      <div class="heading h1">
+        <a href="#alinex-formatter">Alinex Formatter</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#install">Install</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#usage">Usage</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#format">format</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#parse">parse</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#formats">Formats</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#json">JSON</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#javascript">JavaScript</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#cson">CSON</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#coffee">Coffee</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#yaml">YAML</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#xml">XML</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#ini">INI</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#properties">PROPERTIES</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#license">License</a>
+      </div>
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-formatter" title="Fork me on GitHub"></a>
+    <div class="docs markdown"><div class="pilwrap" id="alinex-formatter">
+  <h1>
+    <a href="#alinex-formatter" name="alinex-formatter" class="pilcrow"></a>
+Alinex Formatter
+  </h1>
+</div>
+<p><a href="https://travis-ci.org/alinex/node-formatter"><img src="https://travis-ci.org/alinex/node-formatter.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/alinex/node-formatter?branch=master"><img src="https://coveralls.io/repos/alinex/node-formatter/badge.png?branch=master" alt="Coverage Status"></a>
+<a href="https://gemnasium.com/alinex/node-formatter"><img src="https://gemnasium.com/alinex/node-formatter.png" alt="Dependency Status"></a></p>
+<p>This package will give you an easy way to serialize and deserialize different data
+objects into multiple formats.</p>
+<p>The major features are:</p>
+<ul>
+<li>easy to use</li>
+<li>load format libraries on demand</li>
+<li>auto detection</li>
+</ul>
+<blockquote>
+<p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Universe</a>
+following the code standards defined in the <a href="http://alinex.github.io/develop">General Docs</a>.</p>
+</blockquote>
+<div class="pilwrap" id="install">
+  <h2>
+    <a href="#install" name="install" class="pilcrow"></a>
+Install
+  </h2>
+</div>
+<p><a href="https://www.npmjs.com/package/alinex-formatter"><img src="https://nodei.co/npm/alinex-formatter.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM">
+<img src="https://nodei.co/npm-dl/alinex-formatter.png?months=9&amp;height=3" alt="Downloads">
+</a></p>
+<p>The easiest way is to let npm add the module directly to your modules
+(from within you node modules directory):</p>
+<pre><code class="sh">npm install alinex-formatter --save
+</code></pre>
+<p>And update it to the latest version later:</p>
+<pre><code class="sh">npm update alinex-formatter --save
+</code></pre>
+<p>Always have a look at the latest <a href="Changelog.md.html">changes</a>.</p>
+<div class="pilwrap" id="usage">
+  <h2>
+    <a href="#usage" name="usage" class="pilcrow"></a>
+Usage
+  </h2>
+</div>
+<p>To use the formatter you have to load the module first:</p>
+<pre><code class="coffee">formatter = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-formatter'</span>
+</code></pre>
+<p>This gives you back the main formatter instance which holds two methods to use:</p>
+<div class="pilwrap" id="format">
+  <h3>
+    <a href="#format" name="format" class="pilcrow"></a>
+format
+  </h3>
+</div>
+<p>Serialize data object into string.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>obj</code>
+object to be formatted</li>
+<li><code>format</code>
+formatter to use or filename to read format from</li>
+<li><code>options</code> (optional)
+specific for the formatter</li>
+<li><code>cb</code>
+callback will be called with (err, text)</li>
+</ul>
+<div class="pilwrap" id="parse">
+  <h3>
+    <a href="#parse" name="parse" class="pilcrow"></a>
+parse
+  </h3>
+</div>
+<p>Try to parse object from string. Auto detect if no format is given.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>string</code>
+text to be parsed</li>
+<li><code>format</code> (optional)
+formatter to use or filename to read format from</li>
+<li><code>cb</code>
+callback will be called with (err, object)</li>
+</ul>
+<div class="pilwrap" id="formats">
+  <h2>
+    <a href="#formats" name="formats" class="pilcrow"></a>
+Formats
+  </h2>
+</div>
+<p>This configuration class allows multiple formats to be used.</p>
+<p>The following table will give a short comparison.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Format</th>
+<th style="text-align:center">Readable</th>
+<th style="text-align:center">Comments</th>
+<th style="text-align:center">Arrays</th>
+<th style="text-align:center">Deep</th>
+<th style="text-align:center">Calc</th>
+<th style="text-align:center">Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">JSON</td>
+<td style="text-align:center">++</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">JS</td>
+<td style="text-align:center">++</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">read</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">CSON</td>
+<td style="text-align:center">+++</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">Coffee</td>
+<td style="text-align:center">+++</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">read</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">YAML</td>
+<td style="text-align:center">+++</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">read</td>
+</tr>
+</tbody>
+</table>
+<p>Legend: +++ to --- = good to bad; no = not possible; allow = allowed but unused;
+read = only red but not written; write = only written but not red; yes = fully
+supported; ? = unknown</p>
+<p>See details for each format below.</p>
+<p>Some of the formats support comments but they won't read or write them, they
+only will allow them to be there in the file.</p>
+<div class="pilwrap" id="json">
+  <h3>
+    <a href="#json" name="json" class="pilcrow"></a>
+JSON
+  </h3>
+</div>
+<p>This format uses the javascript object notation a human readable structure. It
+is widely used in different languages not only JavaScript. See description at
+<a href="http://en.wikipedia.org/wiki/Json">Wikipedia</a>.</p>
+<p>Common file extension <code>json</code>.</p>
+<pre><code class="json">{
+  "<span class="hljs-attribute">null</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+  "<span class="hljs-attribute">boolean</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">string</span>": <span class="hljs-value"><span class="hljs-string">"test"</span></span>,
+  "<span class="hljs-attribute">number</span>": <span class="hljs-value"><span class="hljs-number">5.6</span></span>,
+  "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2016-05-10T19:06:36.909Z"</span></span>,
+  "<span class="hljs-attribute">list</span>": <span class="hljs-value">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]</span>,
+  "<span class="hljs-attribute">person</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Alexander Schilling"</span></span>,
+    "<span class="hljs-attribute">job</span>": <span class="hljs-value"><span class="hljs-string">"Developer"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">complex</span>": <span class="hljs-value">[
+    {"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Egon"</span></span>},
+    {"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Janina"</span></span>}
+  ]
+</span>}
+</code></pre>
+<p>JSON's basic data types are:</p>
+<ul>
+<li>Number: a signed decimal number that may contain a fractional part and may use
+exponential E notation, but cannot include non-numbers like <code>NaN</code>.</li>
+<li>String: a sequence of zero or more Unicode characters. Strings are delimited
+with double-quotation marks and support a backslash escaping syntax.</li>
+<li>Boolean: either of the values <code>true</code> or <code>false</code></li>
+<li>Array: an ordered list of zero or more values, each of which may be of any type.
+Arrays use square bracket notation with elements being comma-separated.</li>
+<li>Object: an unordered collection of name/value pairs where the keys are strings.
+Objects are delimited with curly brackets and use commas to separate each pair,
+while within each pair the colon ':' character separates the key or name from
+its value.</li>
+<li>Date: will be formatted as ISO string and stay as string after parsing</li>
+<li>null: An empty value, using the word null</li>
+</ul>
+<p>Whitespace (space, horizontal tab, line feed, and carriage return) is allowed
+and ignored around or between syntactic elements.</p>
+<p>JSON won't allow comments but you may use JavaScript like comments using
+<code>//</code> and <code>/*...*/</code> like known in javascript. Therefore use the javascript
+parsing described below.</p>
+<p><strong>Format Options:</strong></p>
+<ul>
+<li><code>indent</code> - number of spaces or text to indent each level (defaults to 2 spaces)</li>
+</ul>
+<p>With <code>indent: 0</code> the above example would look like:</p>
+<pre><code class="json">{"<span class="hljs-attribute">null</span>":<span class="hljs-value"><span class="hljs-literal">null</span></span>,"<span class="hljs-attribute">boolean</span>":<span class="hljs-value"><span class="hljs-literal">true</span></span>,"<span class="hljs-attribute">string</span>":<span class="hljs-value"><span class="hljs-string">"test"</span></span>,"<span class="hljs-attribute">number</span>":<span class="hljs-value"><span class="hljs-number">5.6</span></span>,"<span class="hljs-attribute">date</span>":<span class="hljs-value"><span class="hljs-string">"2016-05-10T19:06:36.909Z"</span></span>,"<span class="hljs-attribute">list</span>":<span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</span>,"<span class="hljs-attribute">person</span>":<span class="hljs-value">{"<span class="hljs-attribute">name</span>":<span class="hljs-value"><span class="hljs-string">"Alexander Schilling"</span></span>,"<span class="hljs-attribute">job</span>":<span class="hljs-value"><span class="hljs-string">"Developer"</span></span>}</span>}
+</code></pre>
+<div class="pilwrap" id="javascript">
+  <h3>
+    <a href="#javascript" name="javascript" class="pilcrow"></a>
+JavaScript
+  </h3>
+</div>
+<p>Also allowed are normal JavaScript files. In comparison to the JSON format it
+is more loosely so you may use single quotes, keys don't need quotes at all and
+at last you may use calculations. But you may only access elements in the same
+file accessing data from outside is prevented by security.</p>
+<p>Common file extension <code>js</code>.</p>
+<pre><code class="javascript"><span class="hljs-comment">// use an object</span>
+{
+  <span class="hljs-comment">// null value</span>
+  <span class="hljs-literal">null</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-comment">// boolean setting</span>
+  boolean: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">// include a string</span>
+  string: <span class="hljs-string">'test'</span>,
+  <span class="hljs-comment">// any integer or float number</span>
+  number: <span class="hljs-number">5.6</span>,
+  <span class="hljs-comment">// a date as string</span>
+  date: <span class="hljs-string">"2016-05-10T19:06:36.909Z"</span>,
+  <span class="hljs-comment">// and a list of numbers</span>
+  list: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],
+  <span class="hljs-comment">// add a sub object</span>
+  person: {
+    name: <span class="hljs-string">"Alexander Schilling"</span>,
+    job: <span class="hljs-string">"Developer"</span>
+  },
+  <span class="hljs-comment">// complex list with object</span>
+  complex: [
+    {name: <span class="hljs-string">'Egon'</span>},
+    {name: <span class="hljs-string">'Janina'</span>}
+  ],
+  <span class="hljs-comment">// calculate session timeout in milliseconds</span>
+  calc: <span class="hljs-number">15</span>*<span class="hljs-number">60</span>*<span class="hljs-number">1000</span>,
+  math: <span class="hljs-built_in">Math</span>.sqrt(<span class="hljs-number">16</span>)
+}
+</code></pre>
+<p><strong>Format Options:</strong></p>
+<ul>
+<li><code>indent</code> - number of spaces or text to indent each level (defaults to 2 spaces)</li>
+</ul>
+<div class="pilwrap" id="cson">
+  <h3>
+    <a href="#cson" name="cson" class="pilcrow"></a>
+CSON
+  </h3>
+</div>
+<p>Like JSON but here the object is defined using CoffeeScript instead of javascript.</p>
+<p>Common file extension <code>cson</code>.</p>
+<pre><code class="coffee"><span class="hljs-comment"># null value</span>
+<span class="hljs-attribute">null</span>: <span class="hljs-literal">null</span>
+<span class="hljs-comment"># boolean values</span>
+<span class="hljs-attribute">boolean</span>: <span class="hljs-literal">true</span>
+<span class="hljs-comment"># include a string</span>
+<span class="hljs-attribute">string</span>: <span class="hljs-string">'test'</span>
+<span class="hljs-attribute">date</span>: <span class="hljs-string">'2016-05-10T19:06:36.909Z'</span>
+<span class="hljs-comment"># numbers</span>
+<span class="hljs-attribute">numberInt</span>: -<span class="hljs-number">8</span>
+<span class="hljs-attribute">numberFloat</span>: <span class="hljs-number">5.6</span>
+<span class="hljs-comment"># and a list of numbers</span>
+<span class="hljs-attribute">list</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+<span class="hljs-attribute">list2</span>: [
+  <span class="hljs-number">1</span>
+  <span class="hljs-number">2</span>
+  <span class="hljs-number">3</span>
+]
+<span class="hljs-comment"># add a sub object</span>
+<span class="hljs-attribute">person</span>:
+  <span class="hljs-attribute">name</span>: <span class="hljs-string">'Alexander Schilling'</span>
+  <span class="hljs-attribute">job</span>: <span class="hljs-string">'Developer'</span>
+<span class="hljs-comment"># complex list with object</span>
+<span class="hljs-attribute">complex</span>: [
+  <span class="hljs-attribute">name</span>: <span class="hljs-string">'Egon'</span>
+,
+  <span class="hljs-attribute">name</span>: <span class="hljs-string">'Janina'</span>
+]
+<span class="hljs-comment"># Multi-Line Strings! Without Quote Escaping!</span>
+<span class="hljs-attribute">emissions</span>: <span class="hljs-string">'''
+  Livestock and their byproducts account for at least 32,000 million tons of carbon dioxide (CO2) per year, or 51% of all worldwide greenhouse gas emissions.
+  Goodland, R Anhang, J. “Livestock and Climate Change: What if the key actors in climate change were pigs, chickens and cows?”
+  WorldWatch, November/December 2009. Worldwatch Institute, Washington, DC, USA. Pp. 10–19.
+  http://www.worldwatch.org/node/6294
+  '''</span>
+</code></pre>
+<p>CSON solves several major problems with hand-writing JSON by providing:</p>
+<ul>
+<li>the ability to use both single-quoted and double-quoted strings</li>
+<li>the ability to write multi-line strings in multiple lines</li>
+<li>the ability to write a redundant comma</li>
+<li>comments start with <code>#</code> and are allowed</li>
+</ul>
+<p>Besides this facts it's the same as JSON and have the same types.</p>
+<p><strong>Format Options:</strong></p>
+<ul>
+<li><code>indent</code> - number of spaces or text to indent each level (defaults to 2 spaces)</li>
+</ul>
+<div class="pilwrap" id="coffee">
+  <h3>
+    <a href="#coffee" name="coffee" class="pilcrow"></a>
+Coffee
+  </h3>
+</div>
+<p>The Coffee Script format is nearly the same as CSON but caused by the changed
+parser it may contain calculations, too.</p>
+<p>Common file extension <code>coffee</code>.</p>
+<pre><code class="coffee"><span class="hljs-attribute">null</span>: <span class="hljs-literal">null</span>
+<span class="hljs-attribute">boolean</span>: <span class="hljs-literal">true</span>
+<span class="hljs-comment"># include a string</span>
+<span class="hljs-attribute">string</span>: <span class="hljs-string">'test'</span>
+<span class="hljs-attribute">number</span>: <span class="hljs-number">5.6</span>
+<span class="hljs-attribute">date</span>: <span class="hljs-string">'2016-05-10T19:06:36.909Z'</span>
+<span class="hljs-comment"># and a list of numbers</span>
+<span class="hljs-attribute">list</span>: [
+  <span class="hljs-number">1</span>
+  <span class="hljs-number">2</span>
+  <span class="hljs-number">3</span>
+]
+<span class="hljs-comment"># add a sub object</span>
+<span class="hljs-attribute">person</span>:
+  <span class="hljs-attribute">name</span>: <span class="hljs-string">'Alexander Schilling'</span>
+  <span class="hljs-attribute">job</span>: <span class="hljs-string">'Developer'</span>
+<span class="hljs-comment"># complex structure</span>
+<span class="hljs-attribute">complex</span>: [
+  {<span class="hljs-attribute">name</span>: <span class="hljs-string">'Egon'</span>}
+  {<span class="hljs-attribute">name</span>: <span class="hljs-string">'Janina'</span>}
+]
+<span class="hljs-comment"># Multi-Line Strings! Without Quote Escaping!</span>
+<span class="hljs-attribute">emissions</span>: <span class="hljs-string">'''
+  Livestock and their byproducts account for at least 32,000 million tons of carbon dioxide (CO2) per year, or 51% of all worldwide greenhouse gas emissions.
+  Goodland, R Anhang, J. “Livestock and Climate Change: What if the key actors in climate change were pigs, chickens and cows?”
+  WorldWatch, November/December 2009. Worldwatch Institute, Washington, DC, USA. Pp. 10–19.
+  http://www.worldwatch.org/node/6294
+  '''</span>
+<span class="hljs-comment"># calculate session timeout in milliseconds</span>
+<span class="hljs-attribute">calc</span>: <span class="hljs-number">15</span>*<span class="hljs-number">60</span>*<span class="hljs-number">1000</span>
+<span class="hljs-attribute">math</span>: Math.sqrt <span class="hljs-number">16</span>
+</code></pre>
+<p><strong>Format Options:</strong></p>
+<ul>
+<li><code>indent</code> - number of spaces or text to indent each level (defaults to 2 spaces)</li>
+</ul>
+<div class="pilwrap" id="yaml">
+  <h3>
+    <a href="#yaml" name="yaml" class="pilcrow"></a>
+YAML
+  </h3>
+</div>
+<p>This is a simplified and best human readable language to write structured
+information. See some examples at <a href="http://en.wikipedia.org/wiki/YAML">Wikipedia</a>.</p>
+<p>Common file extensions <code>yml</code> or <code>yaml</code>.</p>
+<p><strong>Example</strong></p>
+<pre><code class="yaml"># null value
+null: null
+# boolean values
+boolean: true
+# include a string
+string: test
+unicode: &quot;Sosa did fine.\u263A&quot;
+control: &quot;\b1998\t1999\t2000\n&quot;
+hex esc: &quot;\x0d\x0a is \r\n&quot;
+single: '&quot;Howdy!&quot; he cried.'
+quoted: ' # Not a ''comment''.'
+# date support
+date: 2016-05-10T19:06:36.909Z
+# numbers
+numberInt: -8
+numberFloat: 5.6
+octal: 0o14
+hexadecimal: 0xC
+exponential: 12.3015e+02
+fixed: 1230.15
+negative infinity: -.inf
+not a number: .NaN
+# and a list of numbers
+list: [one, two, three]
+list2:
+  - one
+  - two
+  - three
+# add a sub object
+person:
+  name: Alexander Schilling
+  job: Developer
+# complex list with object
+complex:
+  - name: Egon
+  - {name: Janina}
+# multiline support
+multiline:
+  This text will be read
+  as one line without
+  linebreaks.
+multilineQuoted: &quot;This text will be read
+  as one line without
+  linebreaks.&quot;
+lineBreaks: |
+  This text will keep
+  as it is and all line
+  breaks will be kept.
+lineSingle: &gt;
+  This text will be read
+  as one line without
+  linebreaks.
+lineBreak: &gt;
+  The empty line
+
+  will be a line break.
+# use references
+address1: &amp;adr001
+  city: Stuttgart
+address2: *adr001
+# specific type casts
+numberString: &quot;123&quot;
+numberString2: !!str 123
+#numberFloat: !!float 123
+# binary type
+picture: !!binary |
+  R0lGODdhDQAIAIAAAAAAANn
+  Z2SwAAAAADQAIAAACF4SDGQ
+  ar3xxbJ9p0qa7R0YxwzaFME
+  1IAADs=
+# complex mapping key
+? - Detroit Tigers
+  - Chicago cubs
+: 2001-07-23
+</code></pre>
+<p>The YAML syntax is very powerful but also easy to write in it's basics:</p>
+<ul>
+<li>comments allowed starting with <code>#</code></li>
+<li>dates are allowed as ISO string, too</li>
+<li>different multiline text entries</li>
+<li>special number values</li>
+<li>referenceswith <code>*xxx</code> to the defined '&amp;xxx' anchor</li>
+</ul>
+<p>See the example above.</p>
+<div class="pilwrap" id="xml">
+  <h3>
+    <a href="#xml" name="xml" class="pilcrow"></a>
+XML
+  </h3>
+</div>
+<p>The XML format should only use Tags and values, but no arguments.</p>
+<p>Common file extension <code>xml</code>.</p>
+<pre><code class="xml"></code></pre>
+<div class="pilwrap" id="ini">
+  <h3>
+    <a href="#ini" name="ini" class="pilcrow"></a>
+INI
+  </h3>
+</div>
+<p>This is one of the oldest formats used for configurations. It is very simple but
+allows also complex objects through extended groups.</p>
+<p>Common file extension <code>ini</code>.</p>
+<pre><code class="ini"></code></pre>
+<div class="pilwrap" id="properties">
+  <h3>
+    <a href="#properties" name="properties" class="pilcrow"></a>
+PROPERTIES
+  </h3>
+</div>
+<p>Mainly in the Java world properties are used to setup configuration values.
+But it won't have support for arrays, you only may use objects with numbered keys.</p>
+<pre><code class="properties"></code></pre>
+<div class="pilwrap" id="license">
+  <h2>
+    <a href="#license" name="license" class="pilcrow"></a>
+License
+  </h2>
+</div>
+<p>Copyright 2016 Alexander Schilling</p>
+<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<blockquote>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+</blockquote>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+</div>
+  </div>
+</body>
+</html>

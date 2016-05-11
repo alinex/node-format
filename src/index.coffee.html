@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>index.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "src/index.coffee";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /></head>
+<body>
+  <nav>
+<div class="logo"><a href="http://alinex.github.io"
+  onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'"
+  onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png"
+    width="150" title="Alinex Universe Homepage" />
+  </a>
+  <img src="http://alinex.github.io/images/Alinex-200.png"
+    style="display:none" alt="preloading" />
+</div>
+<div class="links">
+  <a href="http://alinex.github.io/blog"
+    class="btn btn-primary"><span class="glyphicon-pencil"></span> Blog</a>
+  <a href="http://alinex.github.io/develop"
+    class="btn btn-primary"><span class="glyphicon-book"></span> Develop</a>
+  <a href="http://alinex.github.io/code.html"
+    class="btn btn-warning"><span class="glyphicon-cog"></span> Code</a>
+</div>
+</nav><div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+      <div class="heading h1">
+        <a href="#utility-functions-for-objects">Utility functions for objects.</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#node-modules">Node Modules</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#setup">Setup</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#extension-to-parser">Extension to Parser</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#format-object-into-string">Format Object into String</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#parse-object-from-string">Parse Object from String</a>
+      </div>
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-formatter" title="Fork me on GitHub"></a>
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="utility-functions-for-objects">
+  <h1>
+    <a href="#utility-functions-for-objects" name="utility-functions-for-objects" class="pilcrow"></a>
+Utility functions for objects.
+  </h1>
+</div>
+
+        </td>
+        <td class="code highlight">
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="node-modules">
+  <h2>
+    <a href="#node-modules" name="node-modules" class="pilcrow"></a>
+Node Modules
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight">
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<p>include base modules</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">debug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>) <span class="hljs-string">'formatter'</span>
+chalk = <span class="hljs-built_in">require</span> <span class="hljs-string">'chalk'</span>
+async = <span class="hljs-built_in">require</span> <span class="hljs-string">'async'</span>
+path = <span class="hljs-built_in">require</span> <span class="hljs-string">'path'</span>
+util = <span class="hljs-built_in">require</span> <span class="hljs-string">'util'</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="setup">
+  <h2>
+    <a href="#setup" name="setup" class="pilcrow"></a>
+Setup
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">
+autoDetect = [
+  <span class="hljs-string">'xml'</span>
+  <span class="hljs-string">'ini'</span>
+  <span class="hljs-string">'properties'</span>
+  <span class="hljs-string">'cson'</span>
+  <span class="hljs-string">'coffee'</span>
+  <span class="hljs-string">'yaml'</span>
+  <span class="hljs-string">'json'</span>
+  <span class="hljs-string">'js'</span>
+]</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="extension-to-parser">
+  <h3>
+    <a href="#extension-to-parser" name="extension-to-parser" class="pilcrow"></a>
+Extension to Parser
+  </h3>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">ext2parser =
+  <span class="hljs-attribute">yml</span>: <span class="hljs-string">'yaml'</span>
+  <span class="hljs-attribute">yaml</span>: <span class="hljs-string">'yaml'</span>
+  <span class="hljs-attribute">js</span>: <span class="hljs-string">'js'</span>
+  <span class="hljs-attribute">javascript</span>: <span class="hljs-string">'javascript'</span>
+  <span class="hljs-attribute">json</span>: <span class="hljs-string">'json'</span>
+  <span class="hljs-attribute">cson</span>: <span class="hljs-string">'cson'</span>
+  <span class="hljs-attribute">coffee</span>: <span class="hljs-string">'cson'</span>
+  <span class="hljs-attribute">xml</span>: <span class="hljs-string">'xml'</span>
+  <span class="hljs-attribute">ini</span>: <span class="hljs-string">'ini'</span>
+  <span class="hljs-attribute">properties</span>: <span class="hljs-string">'properties'</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="format-object-into-string">
+  <h2>
+    <a href="#format-object-into-string" name="format-object-into-string" class="pilcrow"></a>
+Format Object into String
+  </h2>
+</div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>obj</code>
+object to be formatted</li>
+<li><code>format</code>
+formatter to use or filename to read format from</li>
+<li><code>options</code> (optional)
+specific for the formatter</li>
+<li><code>cb</code>
+callback will be called with (err, text)</li>
+</ul>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">
+exports.format = <span class="hljs-function"><span class="hljs-params">(obj, format, options, cb)</span> -&gt;</span>
+  debug <span class="hljs-string">"format object as <span class="hljs-subst">#{format}</span>"</span>
+  <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> options <span class="hljs-keyword">is</span> <span class="hljs-string">'function'</span>
+    cb = options
+    options = <span class="hljs-literal">null</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7"></a>
+</div>
+<p>read format from filename extension</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-keyword">if</span> format?.match <span class="hljs-regexp">/\./</span>
+    ext = path.extname(format).substring <span class="hljs-number">1</span>
+    format = ext2parser[ext] ? format</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8"></a>
+</div>
+<p>load library</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-keyword">try</span>
+    lib = <span class="hljs-built_in">require</span> <span class="hljs-string">"./type/<span class="hljs-subst">#{format}</span>"</span>
+  <span class="hljs-keyword">catch</span> error
+    <span class="hljs-keyword">return</span> cb <span class="hljs-string">"Couldn't load <span class="hljs-subst">#{format}</span> library: <span class="hljs-subst">#{error.message}</span>"</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-9" id="section-9"></a>
+</div>
+<p>format</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  lib.format obj, options, cb</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="parse-object-from-string">
+  <h2>
+    <a href="#parse-object-from-string" name="parse-object-from-string" class="pilcrow"></a>
+Parse Object from String
+  </h2>
+</div>
+<p>Try to parse object from string. Auto detect if no format is given.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>string</code>
+text to be parsed</li>
+<li><code>format</code> (optional)
+formatter to use or filename to read format from</li>
+<li><code>cb</code>
+callback will be called with (err, object)</li>
+</ul>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.parse = <span class="hljs-function"><span class="hljs-params">(text, format, cb)</span> -&gt;</span>
+  <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> format <span class="hljs-keyword">is</span> <span class="hljs-string">'function'</span>
+    cb = format
+    format = <span class="hljs-literal">null</span>
+  debug <span class="hljs-string">"start parsing <span class="hljs-subst">#{format ? <span class="hljs-string">'unknown'</span>}</span> format"</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-11" id="section-11"></a>
+</div>
+<p>get list of parsers to check</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  detect = autoDetect[<span class="hljs-number">0.</span>.]
+  <span class="hljs-keyword">if</span> format?.match <span class="hljs-regexp">/\./</span>
+    ext = path.extname(format).substring <span class="hljs-number">1</span>
+    <span class="hljs-keyword">if</span> type = ext2parser[ext]
+      i = detect.indexOf type
+      detect.splice i, <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> i &gt; -<span class="hljs-number">1</span>
+      detect.unshift type
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> format
+    <span class="hljs-keyword">if</span> i = detect.indexOf format
+      detect.splice i, <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> i &gt; -<span class="hljs-number">1</span>
+      detect.unshift format</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-12" id="section-12"></a>
+</div>
+<p>try to parse</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  errors = []
+  obj = <span class="hljs-literal">null</span>
+  async.detectSeries detect, <span class="hljs-function"><span class="hljs-params">(format, cb)</span> -&gt;</span>
+    debug chalk.grey <span class="hljs-string">"try to parse as <span class="hljs-subst">#{format}</span>"</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-13" id="section-13"></a>
+</div>
+<p>load library</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    <span class="hljs-keyword">try</span>
+      lib = <span class="hljs-built_in">require</span> <span class="hljs-string">"./type/<span class="hljs-subst">#{format}</span>"</span>
+    <span class="hljs-keyword">catch</span> error
+      <span class="hljs-keyword">return</span> cb <span class="hljs-string">"Couldn't load <span class="hljs-subst">#{format}</span> library: <span class="hljs-subst">#{error.message}</span>"</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-14" id="section-14"></a>
+</div>
+<p>run parser</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    lib.parse text, <span class="hljs-function"><span class="hljs-params">(err, result)</span> -&gt;</span>
+      <span class="hljs-keyword">if</span> err
+        debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{format}</span>: <span class="hljs-subst">#{err.message}</span>"</span>
+        errors.push err.message
+        <span class="hljs-keyword">return</span> cb()
+      obj = result
+      cb <span class="hljs-literal">null</span>, <span class="hljs-literal">true</span>
+  , <span class="hljs-function"><span class="hljs-params">(err, result)</span> -&gt;</span>
+    <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> err
+    <span class="hljs-keyword">if</span> result <span class="hljs-keyword">and</span> obj
+      debug chalk.grey <span class="hljs-string">"result:\n<span class="hljs-subst">#{util.inspect obj, {depth: <span class="hljs-literal">null</span>}</span>}"</span>
+      <span class="hljs-keyword">return</span> cb <span class="hljs-literal">null</span>, obj
+    cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Could not parse from <span class="hljs-subst">#{format ? <span class="hljs-string">'unknown'</span>}</span>:\n<span class="hljs-subst">#{errors.join <span class="hljs-string">'\n'</span>}</span>"</span></pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>
