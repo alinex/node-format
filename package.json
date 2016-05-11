@@ -29,8 +29,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "prepublish": "node_modules/.bin/builder compile --uglify",
-    "test": "node_modules/.bin/builder test",
-    "coveralls": "COVERALLS_SERVICE_NAME=travis-ci COVERALLS_REPO_TOKEN=0KqrJ3onIGIGNQhNEBcrmoIvG4zyvcJz6 node_modules/.bin/builder test --coveralls"
+    "test": "node_modules/.bin/builder test"
   },
   "directories": {
     "lib": "./lib"
