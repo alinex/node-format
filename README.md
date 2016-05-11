@@ -89,9 +89,10 @@ The following table will give a short comparison.
 
 |  Format | Readable | Comments | Arrays | Deep | Calc |
 |:--------|:--------:|:--------:|:------:|:----:|:----:|
-| JSON    |   ++     |    no    |   yes  | yes  |  no  |
-| JS      |   ++     |   yes    |   yes  | yes  | yes  |
-| CSON    |   +++    |   yes    |   yes  | yes  |  no  |
+| JSON    |    ++    |     no   |   yes  |  yes |   no |
+| JS      |    ++    |    yes   |   yes  |  yes |  yes |
+| CSON    |   +++    |    yes   |   yes  |  yes |   no |
+| Coffee  |   +++    |    yes   |   yes  |  yes |  yes |
 
 Comments may be allowed but theiy get lost on reading and neither will be written.
 
@@ -119,7 +120,11 @@ Common file extension `json`.
   "person": {
     "name": "Alexander Schilling",
     "job": "Developer"
-  }
+  },
+  "complex": [
+    {"name": "Egon"},
+    {"name": "Janina"}
+  ]
 }
 ```
 
@@ -185,6 +190,11 @@ Common file extension `js`.
     name: "Alexander Schilling",
     job: "Developer"
   },
+  // complex list with object
+  complex: [
+    {name: 'Egon'},
+    {name: 'Janina'}
+  ],
   // calculate session timeout in milliseconds
   calc: 15*60*1000,
   math: Math.sqrt(16)
@@ -200,6 +210,63 @@ __Format Options:__
 Like JSON but here the object is defined using CoffeeScript instead of javascript.
 
 Common file extension `cson`.
+
+``` coffee
+# null value
+null: null
+# boolean values
+boolean: true
+# include a string
+string: 'test'
+date: '2016-05-10T19:06:36.909Z'
+# numbers
+numberInt: -8
+numberFloat: 5.6
+# and a list of numbers
+list: [1, 2, 3]
+list2: [
+  1
+  2
+  3
+]
+# add a sub object
+person:
+  name: 'Alexander Schilling'
+  job: 'Developer'
+# complex list with object
+complex: [
+  name: 'Egon'
+,
+  name: 'Janina'
+]
+# Multi-Line Strings! Without Quote Escaping!
+emissions: '''
+  Livestock and their byproducts account for at least 32,000 million tons of carbon dioxide (CO2) per year, or 51% of all worldwide greenhouse gas emissions.
+  Goodland, R Anhang, J. “Livestock and Climate Change: What if the key actors in climate change were pigs, chickens and cows?”
+  WorldWatch, November/December 2009. Worldwatch Institute, Washington, DC, USA. Pp. 10–19.
+  http://www.worldwatch.org/node/6294
+  '''
+```
+
+CSON solves several major problems with hand-writing JSON by providing:
+
+- the ability to use both single-quoted and double-quoted strings
+- the ability to write multi-line strings in multiple lines
+- the ability to write a redundant comma
+- comments start with `#` and are allowed
+
+Besides this facts it's the same as JSON and have the same types.
+
+__Format Options:__
+
+- `indent` - number of spaces or text to indent each level (defaults to 2 spaces)
+
+### Coffee
+
+The Coffee Script format is nearly the same as CSON but caused by the changed
+parser it may contain calculations, too.
+
+Common file extension `coffee`.
 
 ``` coffee
 null: null
@@ -218,26 +285,26 @@ list: [
 person:
   name: 'Alexander Schilling'
   job: 'Developer'
+# complex structure
+complex: [
+  {name: 'Egon'}
+  {name: 'Janina'}
+]
+# Multi-Line Strings! Without Quote Escaping!
+emissions: '''
+  Livestock and their byproducts account for at least 32,000 million tons of carbon dioxide (CO2) per year, or 51% of all worldwide greenhouse gas emissions.
+  Goodland, R Anhang, J. “Livestock and Climate Change: What if the key actors in climate change were pigs, chickens and cows?”
+  WorldWatch, November/December 2009. Worldwatch Institute, Washington, DC, USA. Pp. 10–19.
+  http://www.worldwatch.org/node/6294
+  '''
+# calculate session timeout in milliseconds
+calc: 15*60*1000
+math: Math.sqrt 16
 ```
-
-CSON solves several major problems with hand-writing JSON by providing:
-
-- the ability to use both single-quoted and double-quoted strings
-- the ability to write multi-line strings in multiple lines
-- the ability to omit quotes around the string in certain circumstances
-- the ability to write a redundant comma
-- an equal sign `=` can be also used instead of colon `:`
-- comments start with `#` and are allowed
-- the verbatim string syntax `|`
-- whitespace is not significant
-
-Besides this facts it's the same as JSON and have the same types.
 
 __Format Options:__
 
 - `indent` - number of spaces or text to indent each level (defaults to 2 spaces)
-
-
 
 
 
@@ -361,79 +428,6 @@ prop.list.3 = 3
 prop.person.name : Alexander Schilling
 prop.person.job: Developer
 ```
-
-### RDBMS
-
-> Not supported, yet.
-
-| lastchange       | group | key          |  value | comment |
-|------------------|-------|:-------------|:-------|:--------|
-| 2014-12-11 19:45 | test  | rdbms        | null   | use an object |
-| 2014-12-11 19:45 | test  | rdbms.name   | "name" | include a string |
-| 2014-12-11 19:45 | test  | rdbms.list   | null   | and a list of numbers |
-| 2014-12-11 19:45 | test  | rdbms.list[] | 1      |  |
-| 2014-12-11 19:45 | test  | rdbms.list[] | 2      |  |
-| 2014-12-11 19:45 | test  | rdbms.list[] | 3      |  |
-
-### Object DB
-
-> Not supported, yet.
-
-Here, the JSON will be stored in the database like in the JSON file.
-
-
-File Structure
--------------------------------------------------
-As seen above you can use different formats but you can also mix it or split your
-configuration into multiple files.
-
-So as an first example if you have a very large configuration of three major
-parts you may split it up into 3 different files.
-
-``` yaml
-# config/server/http.yml
-listen:
-  ip: 192.168.0.1
-  port: 80
-```
-
-``` yaml
-# config/server/ftp.yml
-listen:
-  ip: 192.168.0.1
-  port: 21
-```
-
-``` yaml
-# config/server/mail.yml
-pop:
-  port: 110
-imap:
-  port: 143
-```
-
-And if the program now reads `config/**` you will get the combined structure:
-
-``` yaml
-server:
-  http:
-    listen:
-      ip: 192.168.0.1
-      port: 80
-  ftp:
-    listen:
-      ip: 192.168.0.1
-      port: 21
-  mail:
-    pop:
-      port: 110
-    imap:
-      port: 143
-```
-
-This is because the config system will use the names behind the asterisk as
-structure levels automatically but you may control the combination rules using
-filter and path in the origin setup (see below).
 
 
 License
