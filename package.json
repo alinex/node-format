@@ -30,7 +30,7 @@
   "scripts": {
     "prepublish": "node_modules/.bin/builder compile --uglify",
     "test": "node_modules/.bin/builder test",
-    "coveralls": "COVERALLS_SERVICE_NAME=travis-ci COVERALLS_REPO_TOKEN=???????????? node_modules/.bin/builder test --coveralls"
+    "coveralls": "COVERALLS_SERVICE_NAME=travis-ci COVERALLS_REPO_TOKEN=0KqrJ3onIGIGNQhNEBcrmoIvG4zyvcJz6 node_modules/.bin/builder test --coveralls"
   },
   "directories": {
     "lib": "./lib"
