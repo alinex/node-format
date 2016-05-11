@@ -8,5 +8,9 @@
   "person": {
     "name": "Alexander Schilling",
     "job": "Developer"
-  }
+  },
+  "complex": [
+    {"name": "Egon"},
+    {"name": "Janina"}
+  ]
 }

@@ -22,6 +22,10 @@ describe "JavaScript", ->
     person:
       name: "Alexander Schilling"
       job: "Developer"
+    complex: [
+      {name: 'Egon'}
+      {name: 'Janina'}
+    ]
     calc: 900000
     math: 4
 

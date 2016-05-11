@@ -7,33 +7,27 @@ chalk = require 'chalk'
 
 formatter = require '../../src/index'
 
-describe "CSON", ->
+describe "CoffeeScript", ->
 
-  file = __dirname + '/../data/format.cson'
-  format = 'cson'
+  file = __dirname + '/../data/format.coffee'
+  format = 'coffee'
   example = fs.readFileSync file, 'UTF8'
   data =
     null: null
     boolean: true
     string: 'test'
-    date: '2016-05-10T19:06:36.909Z'
-    numberInt: -8
-    numberFloat: 5.6
-    list: [ 1, 2, 3 ]
-    list2: [ 1, 2, 3 ]
+    number: 5.6
+    date: "2016-05-10T19:06:36.909Z"
+    list: [1, 2, 3]
     person:
-      name: 'Alexander Schilling'
-      job: 'Developer'
+      name: "Alexander Schilling"
+      job: "Developer"
     complex: [
       {name: 'Egon'}
       {name: 'Janina'}
     ]
-    emissions: 'Livestock and their byproducts account for at least 32,000 million
-    tons of carbon dioxide (CO2) per year, or 51% of all worldwide greenhouse gas
-    emissions.\nGoodland, R Anhang, J. “Livestock and Climate Change: What if the
-    key actors in climate change were pigs, chickens and cows?”\nWorldWatch,
-    November/December 2009. Worldwatch Institute, Washington, DC, USA.
-    Pp. 10–19.\nhttp://www.worldwatch.org/node/6294'
+    calc: 900000
+    math: 4
 
   describe "parse preset file", ->
 

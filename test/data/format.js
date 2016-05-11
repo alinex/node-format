@@ -17,6 +17,11 @@
     name: "Alexander Schilling",
     job: "Developer"
   },
+  // complex list with object
+  complex: [
+    {name: 'Egon'},
+    {name: 'Janina'}
+  ],
   // calculate session timeout in milliseconds
   calc: 15*60*1000,
   math: Math.sqrt(16)

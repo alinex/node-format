@@ -1,11 +1,16 @@
+# null value
 null: null
+# boolean values
 boolean: true
 # include a string
 string: 'test'
-number: 5.6
 date: '2016-05-10T19:06:36.909Z'
+# numbers
+numberInt: -8
+numberFloat: 5.6
 # and a list of numbers
-list: [
+list: [1, 2, 3]
+list2: [
   1
   2
   3
@@ -14,3 +19,16 @@ list: [
 person:
   name: 'Alexander Schilling'
   job: 'Developer'
+# complex list with object
+complex: [
+  name: 'Egon'
+,
+  name: 'Janina'
+]
+# Multi-Line Strings! Without Quote Escaping!
+emissions: '''
+  Livestock and their byproducts account for at least 32,000 million tons of carbon dioxide (CO2) per year, or 51% of all worldwide greenhouse gas emissions.
+  Goodland, R Anhang, J. “Livestock and Climate Change: What if the key actors in climate change were pigs, chickens and cows?”
+  WorldWatch, November/December 2009. Worldwatch Institute, Washington, DC, USA. Pp. 10–19.
+  http://www.worldwatch.org/node/6294
+  '''

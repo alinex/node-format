@@ -220,6 +220,19 @@ person:
   job: 'Developer'
 ```
 
+CSON solves several major problems with hand-writing JSON by providing:
+
+- the ability to use both single-quoted and double-quoted strings
+- the ability to write multi-line strings in multiple lines
+- the ability to omit quotes around the string in certain circumstances
+- the ability to write a redundant comma
+- an equal sign `=` can be also used instead of colon `:`
+- comments start with `#` and are allowed
+- the verbatim string syntax `|`
+- whitespace is not significant
+
+Besides this facts it's the same as JSON and have the same types.
+
 __Format Options:__
 
 - `indent` - number of spaces or text to indent each level (defaults to 2 spaces)

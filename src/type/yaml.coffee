@@ -1,4 +1,4 @@
-# Serializer for js syntax
+# Serializer for yaml syntax
 # =================================================
 
 

@@ -1,4 +1,4 @@
-# Serializer for js syntax
+# Serializer for properties syntax
 # =================================================
 
 

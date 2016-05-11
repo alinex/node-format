@@ -22,6 +22,10 @@ describe "JSON", ->
     person:
       name: "Alexander Schilling"
       job: "Developer"
+    complex: [
+      {name: 'Egon'}
+      {name: 'Janina'}
+    ]
 
   describe "parse preset file", ->
 

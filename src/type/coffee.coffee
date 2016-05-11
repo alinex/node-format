@@ -1,4 +1,4 @@
-# Serializer for cson syntax
+# Serializer for js syntax
 # =================================================
 
 
@@ -6,12 +6,14 @@
 # -------------------------------------------------
 
 # include base modules
-CSON = require 'cson-parser'
+coffee = null # load on demand
+CSON = null # load on demand
 
 
 # object -> string
 # -------------------------------------------------
 exports.format = (obj, options, cb) ->
+  CSON ?= require 'cson-parser'
   # default settings
   options ?=
     indent: 2
@@ -21,8 +23,11 @@ exports.format = (obj, options, cb) ->
 # string -> object
 # -------------------------------------------------
 exports.parse = (text, cb) ->
+  coffee ?= require 'coffee-script'
   try
-    result = CSON.parse text
+    text = "module.exports =\n  " + text.replace /\n/g, '\n  '
+    m = new module.constructor()
+    m._compile coffee.compile(text), 'inline.coffee'
+    cb null, m.exports
   catch error
-    return cb error
-  cb null, result
+    cb error

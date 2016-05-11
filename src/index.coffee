@@ -10,6 +10,7 @@ debug = require('debug') 'formatter'
 chalk = require 'chalk'
 async = require 'async'
 path = require 'path'
+util = require 'util'
 
 # Setup
 # -------------------------------------------------
@@ -19,6 +20,7 @@ autoDetect = [
   'ini'
   'properties'
   'cson'
+  'coffee'
   'yaml'
   'json'
   'js'
@@ -81,10 +83,10 @@ exports.format = (obj, format, options, cb) ->
 # * `cb`
 #   callback will be called with (err, object)
 exports.parse = (text, format, cb) ->
-  debug "start parsing #{format ? 'unknown'} format"
   if typeof format is 'function'
     cb = format
     format = null
+  debug "start parsing #{format ? 'unknown'} format"
   # get list of parsers to check
   detect = autoDetect[0..]
   if format?.match /\./
@@ -117,5 +119,7 @@ exports.parse = (text, format, cb) ->
       cb null, true
   , (err, result) ->
     return cb err if err
-    return cb null, obj if result and obj
+    if result and obj
+      debug chalk.grey "result:\n#{util.inspect obj, {depth:null}}"
+      return cb null, obj
     cb new Error "Could not parse from #{format ? 'unknown'}:\n#{errors.join '\n'}"
