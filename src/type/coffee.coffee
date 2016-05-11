@@ -28,6 +28,6 @@ exports.parse = (text, cb) ->
     text = "module.exports =\n  " + text.replace /\n/g, '\n  '
     m = new module.constructor()
     m._compile coffee.compile(text), 'inline.coffee'
-    cb null, m.exports
   catch error
-    cb error
+    return cb error
+  cb null, m.exports

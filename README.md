@@ -93,6 +93,7 @@ The following table will give a short comparison.
 | JS      |    ++    |    yes   |   yes  |  yes |  yes |
 | CSON    |   +++    |    yes   |   yes  |  yes |   no |
 | Coffee  |   +++    |    yes   |   yes  |  yes |  yes |
+| YAML    |   +++    |    yes   |   yes  |  yes |   no |
 
 Comments may be allowed but theiy get lost on reading and neither will be written.
 
@@ -306,10 +307,6 @@ __Format Options:__
 
 - `indent` - number of spaces or text to indent each level (defaults to 2 spaces)
 
-
-
-
-
 ### YAML
 
 This is a simplified and best human readable language to write structured
@@ -320,36 +317,11 @@ Common file extensions `yml` or `yaml`.
 __Example__
 
 ``` yaml
-# include text elements
-text: test
-
-# commas, colons and brackets has to be in quotes
-longtext: "And a long text with ' and "" is possible, too"
-
-# multiline text with newlines removed
-multiline: >
-  This may be a very long
-  line in which newlines
-  will be removed.
-
-# and now the newlines are kept
-keepnewlines: |
-  Line 1
-  Line 2
-  Line 3
-
-# and some lists
-simplelist: 1, 2, 3
-list:
-  - red
-  - green
-  - blue
-
-# an sub object
-person:
-  name: Alexander Schilling
-  job: Developer
 ```
+
+
+
+
 
 
 ### XML
