@@ -14,10 +14,7 @@ CSON = null # load on demand
 # -------------------------------------------------
 exports.format = (obj, options, cb) ->
   CSON ?= require 'cson-parser'
-  # default settings
-  options ?=
-    indent: 2
-  cb null, CSON.stringify obj, null, options?.indent
+  cb null, CSON.stringify obj, null, options?.indent ? 2
 
 
 # string -> object

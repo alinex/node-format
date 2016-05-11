@@ -14,7 +14,7 @@ yaml = require 'js-yaml'
 exports.format = (obj, options, cb) ->
   try
     text = yaml.safeDump obj
-      indent: options.indent ? 2
+#      indent: options?.indent ? 2
   catch error
     cb new Error(
       error.message
@@ -28,7 +28,6 @@ exports.format = (obj, options, cb) ->
 # -------------------------------------------------
 exports.parse = (text, cb) ->
   try
-    console.log text
     obj = yaml.safeLoad text
   catch error
     return cb new Error(

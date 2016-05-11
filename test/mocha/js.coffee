@@ -56,17 +56,17 @@ describe "JavaScript", ->
         expect(err, 'error').to.not.exist
         expect(typeof text, 'type of result').to.equal 'string'
         debug "result", chalk.grey text
-        formatter.parse text, 'json', (err, obj) ->
+        formatter.parse text, format, (err, obj) ->
           expect(obj, 'reread object').to.deep.equal data
           cb()
 
     it "should format with indent", (cb) ->
-      formatter.format data, 'json',
+      formatter.format data, format,
         indent: 0
       , (err, text) ->
         expect(err, 'error').to.not.exist
         expect(typeof text, 'type of result').to.equal 'string'
         debug "result", chalk.grey text
-        formatter.parse text, 'json', (err, obj) ->
+        formatter.parse text, format, (err, obj) ->
           expect(obj, 'reread object').to.deep.equal data
           cb()

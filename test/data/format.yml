@@ -3,32 +3,72 @@ null: null
 # boolean values
 boolean: true
 # include a string
-string: 'test'
-date: '2016-05-10T19:06:36.909Z'
+string: test
+unicode: "Sosa did fine.\u263A"
+control: "\b1998\t1999\t2000\n"
+hex esc: "\x0d\x0a is \r\n"
+single: '"Howdy!" he cried.'
+quoted: ' # Not a ''comment''.'
+# date support
+date: 2016-05-10T19:06:36.909Z
 # numbers
 numberInt: -8
 numberFloat: 5.6
+octal: 0o14
+hexadecimal: 0xC
+exponential: 12.3015e+02
+fixed: 1230.15
+negative infinity: -.inf
+not a number: .NaN
 # and a list of numbers
-list: [1, 2, 3]
-list2: [
-  1
-  2
-  3
-]
+list: [one, two, three]
+list2:
+  - one
+  - two
+  - three
 # add a sub object
 person:
-  name: 'Alexander Schilling'
-  job: 'Developer'
+  name: Alexander Schilling
+  job: Developer
 # complex list with object
-complex: [
-  name: 'Egon'
-,
-  name: 'Janina'
-]
-# Multi-Line Strings! Without Quote Escaping!
-emissions: '''
-  Livestock and their byproducts account for at least 32,000 million tons of carbon dioxide (CO2) per year, or 51% of all worldwide greenhouse gas emissions.
-  Goodland, R Anhang, J. “Livestock and Climate Change: What if the key actors in climate change were pigs, chickens and cows?”
-  WorldWatch, November/December 2009. Worldwatch Institute, Washington, DC, USA. Pp. 10–19.
-  http://www.worldwatch.org/node/6294
-  '''
+complex:
+  - name: Egon
+  - {name: Janina}
+# multiline support
+multiline:
+  This text will be read
+  as one line without
+  linebreaks.
+multilineQuoted: "This text will be read
+  as one line without
+  linebreaks."
+lineBreaks: |
+  This text will keep
+  as it is and all line
+  breaks will be kept.
+lineSingle: >
+  This text will be read
+  as one line without
+  linebreaks.
+lineBreak: >
+  The empty line
+
+  will be a line break.
+# use references
+address1: &adr001
+  city: Stuttgart
+address2: *adr001
+# specific type casts
+numberString: "123"
+numberString2: !!str 123
+#numberFloat: !!float 123
+# binary type
+picture: !!binary |
+  R0lGODdhDQAIAIAAAAAAANn
+  Z2SwAAAAADQAIAAACF4SDGQ
+  ar3xxbJ9p0qa7R0YxwzaFME
+  1IAADs=
+# complex mapping key
+? - Detroit Tigers
+  - Chicago cubs
+: 2001-07-23

@@ -5,10 +5,7 @@
 # object -> string
 # -------------------------------------------------
 exports.format = (obj, options, cb) ->
-  # default settings
-  options ?=
-    indent: 2
-  cb null, JSON.stringify obj, null, options?.indent
+  cb null, JSON.stringify obj, null, options?.indent ? 2
 
 
 # string -> object
