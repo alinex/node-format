@@ -95,7 +95,7 @@ The following table will give a short comparison.
 | Coffee  |   +++    |  allow   |   yes  |  yes | read |   no |
 | YAML    |   +++    |  allow   |   yes  |  yes |   no | read |
 | INI     |    ++    |  allow   |   yes  |  yes |   no |   no |
-| Properties | ++    |  allow   |  (yes) |  yes |   no |  yes |
+| Properties | ++    |  allow   |   yes  |  yes |   no |  yes |
 
 Legend: +++ to --- = good to bad; no = not possible; allow = allowed but unused;
 read = only red but not written; write = only written but not red; yes = fully

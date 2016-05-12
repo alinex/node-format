@@ -18,10 +18,7 @@ describe "INI", ->
     multiline: 'This text goes over multiple lines.'
     integer: 15
     float: -4.6
-    list:
-      '1': 'one'
-      '2': 'two'
-      '3': 'three'
+    list: ['one', 'two', 'three']
     person:
       name: 'Alexander Schilling'
       job: 'Developer'

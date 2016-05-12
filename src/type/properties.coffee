@@ -13,7 +13,7 @@ properties = require 'properties'
 # -------------------------------------------------
 exports.format = (obj, options, cb) ->
   try
-    text = properties.stringify obj,
+    text = properties.stringify flatten(obj),
       unicode: true
   catch error
     return cb error if error
@@ -31,8 +31,11 @@ exports.parse = (text, cb) ->
     return cb err if err
     unless propertiesCheck result
       return cb new Error "Unexpected characters []{}/ in key name found"
-    cb null, result
+    cb null, optimizeArray result
 
+
+# Helper
+# -------------------------------------------------
 propertiesCheck = (data) ->
   return true unless typeof data is 'object'
   for k, v of data
@@ -40,3 +43,29 @@ propertiesCheck = (data) ->
       return false
     return false unless propertiesCheck v
   return true
+
+flatten = (obj) ->
+  return obj unless typeof obj is 'object'
+  flat = {}
+  # recursive flatten
+  for key, value of obj
+    unless typeof value is 'object'
+      flat[key] = value
+    else
+      for k, v of flatten value
+        flat["#{key}.#{k}"] = v
+  return flat
+
+optimizeArray = (obj) ->
+  return obj unless typeof obj is 'object'
+  # resursive work further
+  for key, value of obj
+    obj[key] = optimizeArray value
+  # replace with array if possible
+  keys = Object.keys obj
+  keys.sort()
+  if keys.join(',') is [0..keys.length-1].join(',')
+    list = []
+    list.push obj[k] for k in keys
+    obj = list
+  obj
