@@ -95,6 +95,7 @@ The following table will give a short comparison.
 | Coffee  |   +++    |  allow   |   yes  |  yes | read |   no |
 | YAML    |   +++    |  allow   |   yes  |  yes |   no | read |
 | INI     |    ++    |  allow   |   yes  |  yes |   no |   no |
+| Properties | ++    |  allow   |  (yes) |  yes |   no |  yes |
 
 Legend: +++ to --- = good to bad; no = not possible; allow = allowed but unused;
 read = only red but not written; write = only written but not red; yes = fully
@@ -439,8 +440,50 @@ __Format Options:__
 
 - `whitespace` - should spaces be put arround `=` (defaults to true)
 
+### PROPERTIES
 
+Mainly in the Java world properties are used to setup configuration values.
+But it won't have support for arrays, you only may use objects with numbered keys.
 
+Common file extension `properties`.
+
+``` properties
+# strings
+string = test
+other text
+multiline This text \
+  goes over multiple lines.
+
+# numbers
+integer = 15
+float: -4.6
+
+! add a simple list
+list.1 = one
+list.2 = two
+list.3 = three
+
+! add a sub object
+person.name: Alexander Schilling
+person.job: Developer
+
+#references
+ref = ${string}
+
+# add a section
+[section]
+name = Alex
+same = ${section|name}
+```
+
+This format supports:
+
+- key and value may be divided by `=`, `:` with spaces or only a space
+- comments start with `!` or `#`
+- structure data using sections with square brackets like in ini files
+- structure data using namespaces in the key using dot as seperator
+- references to other values with `${key}`
+- references work also as section names or reference name
 
 
 
@@ -453,14 +496,6 @@ The XML format should only use Tags and values, but no arguments.
 Common file extension `xml`.
 
 ``` xml
-```
-
-### PROPERTIES
-
-Mainly in the Java world properties are used to setup configuration values.
-But it won't have support for arrays, you only may use objects with numbered keys.
-
-``` properties
 ```
 
 

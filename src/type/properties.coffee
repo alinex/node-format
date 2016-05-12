@@ -12,6 +12,12 @@ properties = require 'properties'
 # object -> string
 # -------------------------------------------------
 exports.format = (obj, options, cb) ->
+  try
+    text = properties.stringify obj,
+      unicode: true
+  catch error
+    return cb error if error
+  cb null, text
 
 
 # string -> object
@@ -20,6 +26,7 @@ exports.parse = (text, cb) ->
   properties.parse text,
     sections: true
     namespaces: true
+    variables: true
   , (err, result) ->
     return cb err if err
     unless propertiesCheck result
