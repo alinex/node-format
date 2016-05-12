@@ -4,17 +4,6 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
-Version 0.2.1 (2016-05-12)
--------------------------------------------------
-- Finish format support as properties.
-- Added basic property support with problems in writing.
-- Add support for ini format.
-- Updated documentation
-- Change versions to test.
-- Fix travis config.
-- Add coveralls key.
-- Fixed urls in package.json.
-
 Version 0.2.0 (2016-05-11)
 -------------------------------------------------
 - Updates docs.
