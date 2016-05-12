@@ -94,6 +94,7 @@ The following table will give a short comparison.
 | CSON    |   +++    |  allow   |   yes  |  yes |   no |   no |
 | Coffee  |   +++    |  allow   |   yes  |  yes | read |   no |
 | YAML    |   +++    |  allow   |   yes  |  yes |   no | read |
+| INI     |    ++    |  allow   |   yes  |  yes |   no |   no |
 
 Legend: +++ to --- = good to bad; no = not possible; allow = allowed but unused;
 read = only red but not written; write = only written but not red; yes = fully
@@ -214,7 +215,7 @@ Like JSON but here the object is defined using CoffeeScript instead of javascrip
 
 Common file extension `cson`.
 
-``` coffee
+``` cson
 # null value
 null: null
 # boolean values
@@ -405,6 +406,39 @@ The YAML syntax is very powerful but also easy to write in it's basics:
 
 See the example above.
 
+### INI
+
+This is one of the oldest formats used for configurations. It is very simple but
+allows also complex objects through extended groups.
+
+Common file extension `ini`.
+
+``` ini
+; simple text
+string = test
+
+; add a simple list
+list[] = 1
+list[] = 2
+list[] = 3
+
+; add a group
+[person]
+name = Alexander Schilling
+job = Developer
+
+; add a subgroup
+[city.address]
+name = Stuttgart
+```
+
+Comments start with semicolon and grous/sections are marked by square brackets.
+The group name defines the object to add the properties to.
+
+__Format Options:__
+
+- `whitespace` - should spaces be put arround `=` (defaults to true)
+
 
 
 
@@ -419,16 +453,6 @@ The XML format should only use Tags and values, but no arguments.
 Common file extension `xml`.
 
 ``` xml
-```
-
-### INI
-
-This is one of the oldest formats used for configurations. It is very simple but
-allows also complex objects through extended groups.
-
-Common file extension `ini`.
-
-``` ini
 ```
 
 ### PROPERTIES

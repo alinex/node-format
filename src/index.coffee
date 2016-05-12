@@ -67,7 +67,9 @@ exports.format = (obj, format, options, cb) ->
   catch error
     return cb "Couldn't load #{format} library: #{error.message}"
   # format
-  lib.format obj, options, cb
+  lib.format obj, options, (err, text) ->
+    debug chalk.grey "result:\n#{text}"
+    cb err, text
 
 
 # Parse Object from String

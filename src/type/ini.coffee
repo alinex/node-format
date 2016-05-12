@@ -12,7 +12,12 @@ ini = require 'ini'
 # object -> string
 # -------------------------------------------------
 exports.format = (obj, options, cb) ->
-
+  try
+    text = ini.encode obj,
+      whitespace: if options?.whitespace? then options.whitespace else true
+  catch error
+    return cb error
+  cb null, text
 
 # string -> object
 # -------------------------------------------------
