@@ -119,7 +119,13 @@ object -&gt; string
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">exports.format = <span class="hljs-function"><span class="hljs-params">(obj, options, cb)</span> -&gt;</span></pre>
+          <pre class="coffeescript">exports.format = <span class="hljs-function"><span class="hljs-params">(obj, options, cb)</span> -&gt;</span>
+  <span class="hljs-keyword">try</span>
+    text = ini.encode obj,
+      whitespace: <span class="hljs-keyword">if</span> options?.whitespace? <span class="hljs-keyword">then</span> options.whitespace <span class="hljs-keyword">else</span> <span class="hljs-literal">true</span>
+  <span class="hljs-keyword">catch</span> error
+    <span class="hljs-keyword">return</span> cb error
+  cb <span class="hljs-literal">null</span>, text</pre>
         </td>
       </tr>
     

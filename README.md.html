@@ -85,15 +85,15 @@
       </div>
 
       <div class="heading h3">
-        <a href="#xml">XML</a>
-      </div>
-
-      <div class="heading h3">
         <a href="#ini">INI</a>
       </div>
 
       <div class="heading h3">
         <a href="#properties">PROPERTIES</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#xml">XML</a>
       </div>
 
       <div class="heading h2">
@@ -252,6 +252,24 @@ Formats
 <td style="text-align:center">no</td>
 <td style="text-align:center">read</td>
 </tr>
+<tr>
+<td style="text-align:left">INI</td>
+<td style="text-align:center">++</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">Properties</td>
+<td style="text-align:center">++</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">yes</td>
+</tr>
 </tbody>
 </table>
 <p>Legend: +++ to --- = good to bad; no = not possible; allow = allowed but unused;
@@ -271,21 +289,21 @@ is widely used in different languages not only JavaScript. See description at
 <a href="http://en.wikipedia.org/wiki/Json">Wikipedia</a>.</p>
 <p>Common file extension <code>json</code>.</p>
 <pre><code class="json">{
-  "<span class="hljs-attribute">null</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
-  "<span class="hljs-attribute">boolean</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
-  "<span class="hljs-attribute">string</span>": <span class="hljs-value"><span class="hljs-string">"test"</span></span>,
-  "<span class="hljs-attribute">number</span>": <span class="hljs-value"><span class="hljs-number">5.6</span></span>,
-  "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2016-05-10T19:06:36.909Z"</span></span>,
-  "<span class="hljs-attribute">list</span>": <span class="hljs-value">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]</span>,
-  "<span class="hljs-attribute">person</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Alexander Schilling"</span></span>,
-    "<span class="hljs-attribute">job</span>": <span class="hljs-value"><span class="hljs-string">"Developer"</span>
-  </span>}</span>,
-  "<span class="hljs-attribute">complex</span>": <span class="hljs-value">[
-    {"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Egon"</span></span>},
-    {"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Janina"</span></span>}
+  <span class="hljs-attr">"null"</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-attr">"boolean"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"string"</span>: <span class="hljs-string">"test"</span>,
+  <span class="hljs-attr">"number"</span>: <span class="hljs-number">5.6</span>,
+  <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2016-05-10T19:06:36.909Z"</span>,
+  <span class="hljs-attr">"list"</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],
+  <span class="hljs-attr">"person"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Alexander Schilling"</span>,
+    <span class="hljs-attr">"job"</span>: <span class="hljs-string">"Developer"</span>
+  },
+  <span class="hljs-attr">"complex"</span>: [
+    {<span class="hljs-attr">"name"</span>: <span class="hljs-string">"Egon"</span>},
+    {<span class="hljs-attr">"name"</span>: <span class="hljs-string">"Janina"</span>}
   ]
-</span>}
+}
 </code></pre>
 <p>JSON's basic data types are:</p>
 <ul>
@@ -313,7 +331,7 @@ parsing described below.</p>
 <li><code>indent</code> - number of spaces or text to indent each level (defaults to 2 spaces)</li>
 </ul>
 <p>With <code>indent: 0</code> the above example would look like:</p>
-<pre><code class="json">{"<span class="hljs-attribute">null</span>":<span class="hljs-value"><span class="hljs-literal">null</span></span>,"<span class="hljs-attribute">boolean</span>":<span class="hljs-value"><span class="hljs-literal">true</span></span>,"<span class="hljs-attribute">string</span>":<span class="hljs-value"><span class="hljs-string">"test"</span></span>,"<span class="hljs-attribute">number</span>":<span class="hljs-value"><span class="hljs-number">5.6</span></span>,"<span class="hljs-attribute">date</span>":<span class="hljs-value"><span class="hljs-string">"2016-05-10T19:06:36.909Z"</span></span>,"<span class="hljs-attribute">list</span>":<span class="hljs-value">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</span>,"<span class="hljs-attribute">person</span>":<span class="hljs-value">{"<span class="hljs-attribute">name</span>":<span class="hljs-value"><span class="hljs-string">"Alexander Schilling"</span></span>,"<span class="hljs-attribute">job</span>":<span class="hljs-value"><span class="hljs-string">"Developer"</span></span>}</span>}
+<pre><code class="json">{<span class="hljs-attr">"null"</span>:<span class="hljs-literal">null</span>,<span class="hljs-attr">"boolean"</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">"string"</span>:<span class="hljs-string">"test"</span>,<span class="hljs-attr">"number"</span>:<span class="hljs-number">5.6</span>,<span class="hljs-attr">"date"</span>:<span class="hljs-string">"2016-05-10T19:06:36.909Z"</span>,<span class="hljs-attr">"list"</span>:[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],<span class="hljs-attr">"person"</span>:{<span class="hljs-attr">"name"</span>:<span class="hljs-string">"Alexander Schilling"</span>,<span class="hljs-attr">"job"</span>:<span class="hljs-string">"Developer"</span>}}
 </code></pre>
 <div class="pilwrap" id="javascript">
   <h3>
@@ -367,35 +385,35 @@ CSON
 </div>
 <p>Like JSON but here the object is defined using CoffeeScript instead of javascript.</p>
 <p>Common file extension <code>cson</code>.</p>
-<pre><code class="coffee"><span class="hljs-comment"># null value</span>
-<span class="hljs-attribute">null</span>: <span class="hljs-literal">null</span>
+<pre><code class="cson"><span class="hljs-comment"># null value</span>
+null: <span class="hljs-literal">null</span>
 <span class="hljs-comment"># boolean values</span>
-<span class="hljs-attribute">boolean</span>: <span class="hljs-literal">true</span>
+boolean: <span class="hljs-literal">true</span>
 <span class="hljs-comment"># include a string</span>
-<span class="hljs-attribute">string</span>: <span class="hljs-string">'test'</span>
-<span class="hljs-attribute">date</span>: <span class="hljs-string">'2016-05-10T19:06:36.909Z'</span>
+string: <span class="hljs-string">'test'</span>
+date: <span class="hljs-string">'2016-05-10T19:06:36.909Z'</span>
 <span class="hljs-comment"># numbers</span>
-<span class="hljs-attribute">numberInt</span>: -<span class="hljs-number">8</span>
-<span class="hljs-attribute">numberFloat</span>: <span class="hljs-number">5.6</span>
+numberInt: <span class="hljs-number">-8</span>
+numberFloat: <span class="hljs-number">5.6</span>
 <span class="hljs-comment"># and a list of numbers</span>
-<span class="hljs-attribute">list</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
-<span class="hljs-attribute">list2</span>: [
+list: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+list2: [
   <span class="hljs-number">1</span>
   <span class="hljs-number">2</span>
   <span class="hljs-number">3</span>
 ]
 <span class="hljs-comment"># add a sub object</span>
-<span class="hljs-attribute">person</span>:
-  <span class="hljs-attribute">name</span>: <span class="hljs-string">'Alexander Schilling'</span>
-  <span class="hljs-attribute">job</span>: <span class="hljs-string">'Developer'</span>
+person:
+  name: <span class="hljs-string">'Alexander Schilling'</span>
+  job: <span class="hljs-string">'Developer'</span>
 <span class="hljs-comment"># complex list with object</span>
-<span class="hljs-attribute">complex</span>: [
-  <span class="hljs-attribute">name</span>: <span class="hljs-string">'Egon'</span>
+complex: [
+  name: <span class="hljs-string">'Egon'</span>
 ,
-  <span class="hljs-attribute">name</span>: <span class="hljs-string">'Janina'</span>
+  name: <span class="hljs-string">'Janina'</span>
 ]
 <span class="hljs-comment"># Multi-Line Strings! Without Quote Escaping!</span>
-<span class="hljs-attribute">emissions</span>: <span class="hljs-string">'''
+emissions: <span class="hljs-string">'''
   Livestock and their byproducts account for at least 32,000 million tons of carbon dioxide (CO2) per year, or 51% of all worldwide greenhouse gas emissions.
   Goodland, R Anhang, J. “Livestock and Climate Change: What if the key actors in climate change were pigs, chickens and cows?”
   WorldWatch, November/December 2009. Worldwatch Institute, Washington, DC, USA. Pp. 10–19.
@@ -423,37 +441,37 @@ Coffee
 <p>The Coffee Script format is nearly the same as CSON but caused by the changed
 parser it may contain calculations, too.</p>
 <p>Common file extension <code>coffee</code>.</p>
-<pre><code class="coffee"><span class="hljs-attribute">null</span>: <span class="hljs-literal">null</span>
-<span class="hljs-attribute">boolean</span>: <span class="hljs-literal">true</span>
+<pre><code class="coffee">null: <span class="hljs-literal">null</span>
+boolean: <span class="hljs-literal">true</span>
 <span class="hljs-comment"># include a string</span>
-<span class="hljs-attribute">string</span>: <span class="hljs-string">'test'</span>
-<span class="hljs-attribute">number</span>: <span class="hljs-number">5.6</span>
-<span class="hljs-attribute">date</span>: <span class="hljs-string">'2016-05-10T19:06:36.909Z'</span>
+string: <span class="hljs-string">'test'</span>
+number: <span class="hljs-number">5.6</span>
+date: <span class="hljs-string">'2016-05-10T19:06:36.909Z'</span>
 <span class="hljs-comment"># and a list of numbers</span>
-<span class="hljs-attribute">list</span>: [
+list: [
   <span class="hljs-number">1</span>
   <span class="hljs-number">2</span>
   <span class="hljs-number">3</span>
 ]
 <span class="hljs-comment"># add a sub object</span>
-<span class="hljs-attribute">person</span>:
-  <span class="hljs-attribute">name</span>: <span class="hljs-string">'Alexander Schilling'</span>
-  <span class="hljs-attribute">job</span>: <span class="hljs-string">'Developer'</span>
+person:
+  name: <span class="hljs-string">'Alexander Schilling'</span>
+  job: <span class="hljs-string">'Developer'</span>
 <span class="hljs-comment"># complex structure</span>
-<span class="hljs-attribute">complex</span>: [
-  {<span class="hljs-attribute">name</span>: <span class="hljs-string">'Egon'</span>}
-  {<span class="hljs-attribute">name</span>: <span class="hljs-string">'Janina'</span>}
+complex: [
+  {name: <span class="hljs-string">'Egon'</span>}
+  {name: <span class="hljs-string">'Janina'</span>}
 ]
 <span class="hljs-comment"># Multi-Line Strings! Without Quote Escaping!</span>
-<span class="hljs-attribute">emissions</span>: <span class="hljs-string">'''
+emissions: <span class="hljs-string">'''
   Livestock and their byproducts account for at least 32,000 million tons of carbon dioxide (CO2) per year, or 51% of all worldwide greenhouse gas emissions.
   Goodland, R Anhang, J. “Livestock and Climate Change: What if the key actors in climate change were pigs, chickens and cows?”
   WorldWatch, November/December 2009. Worldwatch Institute, Washington, DC, USA. Pp. 10–19.
   http://www.worldwatch.org/node/6294
   '''</span>
 <span class="hljs-comment"># calculate session timeout in milliseconds</span>
-<span class="hljs-attribute">calc</span>: <span class="hljs-number">15</span>*<span class="hljs-number">60</span>*<span class="hljs-number">1000</span>
-<span class="hljs-attribute">math</span>: Math.sqrt <span class="hljs-number">16</span>
+calc: <span class="hljs-number">15</span>*<span class="hljs-number">60</span>*<span class="hljs-number">1000</span>
+math: Math.sqrt <span class="hljs-number">16</span>
 </code></pre>
 <p><strong>Format Options:</strong></p>
 <ul>
@@ -469,72 +487,72 @@ YAML
 information. See some examples at <a href="http://en.wikipedia.org/wiki/YAML">Wikipedia</a>.</p>
 <p>Common file extensions <code>yml</code> or <code>yaml</code>.</p>
 <p><strong>Example</strong></p>
-<pre><code class="yaml"># null value
-null: null
-# boolean values
-boolean: true
-# include a string
-string: test
-unicode: &quot;Sosa did fine.\u263A&quot;
-control: &quot;\b1998\t1999\t2000\n&quot;
-hex esc: &quot;\x0d\x0a is \r\n&quot;
-single: '&quot;Howdy!&quot; he cried.'
-quoted: ' # Not a ''comment''.'
-# date support
-date: 2016-05-10T19:06:36.909Z
-# numbers
-numberInt: -8
-numberFloat: 5.6
-octal: 0o14
-hexadecimal: 0xC
-exponential: 12.3015e+02
-fixed: 1230.15
+<pre><code class="yaml"><span class="hljs-comment"># null value</span>
+<span class="hljs-attr">null:</span> <span class="hljs-literal">null</span>
+<span class="hljs-comment"># boolean values</span>
+<span class="hljs-attr">boolean:</span> <span class="hljs-literal">true</span>
+<span class="hljs-comment"># include a string</span>
+<span class="hljs-attr">string:</span> test
+<span class="hljs-attr">unicode:</span> <span class="hljs-string">"Sosa did fine.\u263A"</span>
+<span class="hljs-attr">control:</span> <span class="hljs-string">"\b1998\t1999\t2000\n"</span>
+hex esc: <span class="hljs-string">"\x0d\x0a is \r\n"</span>
+<span class="hljs-attr">single:</span> <span class="hljs-string">'"Howdy!" he cried.'</span>
+<span class="hljs-attr">quoted:</span> <span class="hljs-string">' # Not a '</span><span class="hljs-string">'comment'</span><span class="hljs-string">'.'</span>
+<span class="hljs-comment"># date support</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2016</span><span class="hljs-bullet">-05</span><span class="hljs-bullet">-10</span>T19:<span class="hljs-number">06</span>:<span class="hljs-number">36.909</span>Z
+<span class="hljs-comment"># numbers</span>
+<span class="hljs-attr">numberInt:</span> <span class="hljs-bullet">-8</span>
+<span class="hljs-attr">numberFloat:</span> <span class="hljs-number">5.6</span>
+<span class="hljs-attr">octal:</span> <span class="hljs-number">0</span>o14
+<span class="hljs-attr">hexadecimal:</span> <span class="hljs-number">0xC</span>
+<span class="hljs-attr">exponential:</span> <span class="hljs-number">12.3015e+02</span>
+<span class="hljs-attr">fixed:</span> <span class="hljs-number">1230.15</span>
 negative infinity: -.inf
 not a number: .NaN
-# and a list of numbers
-list: [one, two, three]
-list2:
-  - one
-  - two
-  - three
-# add a sub object
-person:
-  name: Alexander Schilling
-  job: Developer
-# complex list with object
-complex:
-  - name: Egon
-  - {name: Janina}
-# multiline support
-multiline:
+<span class="hljs-comment"># and a list of numbers</span>
+<span class="hljs-attr">list:</span> [one, two, three]
+<span class="hljs-attr">list2:</span>
+<span class="hljs-bullet">  -</span> one
+<span class="hljs-bullet">  -</span> two
+<span class="hljs-bullet">  -</span> three
+<span class="hljs-comment"># add a sub object</span>
+<span class="hljs-attr">person:</span>
+<span class="hljs-attr">  name:</span> Alexander Schilling
+<span class="hljs-attr">  job:</span> Developer
+<span class="hljs-comment"># complex list with object</span>
+<span class="hljs-attr">complex:</span>
+<span class="hljs-attr">  - name:</span> Egon
+<span class="hljs-bullet">  -</span> {name: Janina}
+<span class="hljs-comment"># multiline support</span>
+<span class="hljs-attr">multiline:</span>
   This text will be read
   as one line without
   linebreaks.
-multilineQuoted: &quot;This text will be read
+<span class="hljs-attr">multilineQuoted:</span> <span class="hljs-string">"This text will be read
   as one line without
-  linebreaks.&quot;
-lineBreaks: |
+  linebreaks."</span>
+<span class="hljs-attr">lineBreaks:</span> <span class="hljs-string">|
   This text will keep
   as it is and all line
   breaks will be kept.
-lineSingle: &gt;
+</span><span class="hljs-attr">lineSingle:</span> <span class="hljs-string">&gt;
   This text will be read
   as one line without
   linebreaks.
-lineBreak: &gt;
+</span><span class="hljs-attr">lineBreak:</span> <span class="hljs-string">&gt;
   The empty line
 
   will be a line break.
 # use references
-address1: &amp;adr001
-  city: Stuttgart
-address2: *adr001
-# specific type casts
-numberString: &quot;123&quot;
-numberString2: !!str 123
-#numberFloat: !!float 123
-# binary type
-picture: !!binary |
+</span><span class="hljs-attr">address1:</span> <span class="hljs-meta">&amp;adr001</span>
+<span class="hljs-attr">  city:</span> Stuttgart
+<span class="hljs-attr">address2:</span> <span class="hljs-meta">*adr001</span>
+<span class="hljs-comment"># specific type casts</span>
+<span class="hljs-attr">numberString:</span> <span class="hljs-string">"123"</span>
+<span class="hljs-attr">numberString2:</span> <span class="hljs-type">!!str</span> <span class="hljs-number">123</span>
+<span class="hljs-comment">#numberFloat: !!float 123</span>
+<span class="hljs-comment"># binary type</span>
+<span class="hljs-attr">picture:</span> <span class="hljs-type">!!binary</span> <span class="hljs-string">|
   R0lGODdhDQAIAIAAAAAAANn
   Z2SwAAAAADQAIAAACF4SDGQ
   ar3xxbJ9p0qa7R0YxwzaFME
@@ -543,7 +561,7 @@ picture: !!binary |
 ? - Detroit Tigers
   - Chicago cubs
 : 2001-07-23
-</code></pre>
+</span></code></pre>
 <p>The YAML syntax is very powerful but also easy to write in it's basics:</p>
 <ul>
 <li>comments allowed starting with <code>#</code></li>
@@ -553,15 +571,6 @@ picture: !!binary |
 <li>referenceswith <code>*xxx</code> to the defined '&amp;xxx' anchor</li>
 </ul>
 <p>See the example above.</p>
-<div class="pilwrap" id="xml">
-  <h3>
-    <a href="#xml" name="xml" class="pilcrow"></a>
-XML
-  </h3>
-</div>
-<p>The XML format should only use Tags and values, but no arguments.</p>
-<p>Common file extension <code>xml</code>.</p>
-<pre><code class="xml"></code></pre>
 <div class="pilwrap" id="ini">
   <h3>
     <a href="#ini" name="ini" class="pilcrow"></a>
@@ -571,7 +580,29 @@ INI
 <p>This is one of the oldest formats used for configurations. It is very simple but
 allows also complex objects through extended groups.</p>
 <p>Common file extension <code>ini</code>.</p>
-<pre><code class="ini"></code></pre>
+<pre><code class="ini"><span class="hljs-comment">; simple text</span>
+<span class="hljs-attr">string</span> = test
+
+<span class="hljs-comment">; add a simple list</span>
+<span class="hljs-attr">list[]</span> = <span class="hljs-number">1</span>
+<span class="hljs-attr">list[]</span> = <span class="hljs-number">2</span>
+<span class="hljs-attr">list[]</span> = <span class="hljs-number">3</span>
+
+<span class="hljs-comment">; add a group</span>
+<span class="hljs-section">[person]</span>
+<span class="hljs-attr">name</span> = Alexander Schilling
+<span class="hljs-attr">job</span> = Developer
+
+<span class="hljs-comment">; add a subgroup</span>
+<span class="hljs-section">[city.address]</span>
+<span class="hljs-attr">name</span> = Stuttgart
+</code></pre>
+<p>Comments start with semicolon and grous/sections are marked by square brackets.
+The group name defines the object to add the properties to.</p>
+<p><strong>Format Options:</strong></p>
+<ul>
+<li><code>whitespace</code> - should spaces be put arround <code>=</code> (defaults to true)</li>
+</ul>
 <div class="pilwrap" id="properties">
   <h3>
     <a href="#properties" name="properties" class="pilcrow"></a>
@@ -580,7 +611,52 @@ PROPERTIES
 </div>
 <p>Mainly in the Java world properties are used to setup configuration values.
 But it won't have support for arrays, you only may use objects with numbered keys.</p>
-<pre><code class="properties"></code></pre>
+<p>Common file extension <code>properties</code>.</p>
+<pre><code class="properties"># strings
+string = test
+other text
+multiline This text \
+  goes over multiple lines.
+
+# numbers
+integer = 15
+float: -4.6
+
+! add a simple list
+list.1 = one
+list.2 = two
+list.3 = three
+
+! add a sub object
+person.name: Alexander Schilling
+person.job: Developer
+
+#references
+ref = ${string}
+
+# add a section
+[section]
+name = Alex
+same = ${section|name}
+</code></pre>
+<p>This format supports:</p>
+<ul>
+<li>key and value may be divided by <code>=</code>, <code>:</code> with spaces or only a space</li>
+<li>comments start with <code>!</code> or <code>#</code></li>
+<li>structure data using sections with square brackets like in ini files</li>
+<li>structure data using namespaces in the key using dot as seperator</li>
+<li>references to other values with <code>${key}</code></li>
+<li>references work also as section names or reference name</li>
+</ul>
+<div class="pilwrap" id="xml">
+  <h3>
+    <a href="#xml" name="xml" class="pilcrow"></a>
+XML
+  </h3>
+</div>
+<p>The XML format should only use Tags and values, but no arguments.</p>
+<p>Common file extension <code>xml</code>.</p>
+<pre><code class="xml"></code></pre>
 <div class="pilwrap" id="license">
   <h2>
     <a href="#license" name="license" class="pilcrow"></a>

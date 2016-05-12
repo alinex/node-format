@@ -157,16 +157,16 @@ Extension to Parser
         </td>
         <td class="code highlight">
           <pre class="coffeescript">ext2parser =
-  <span class="hljs-attribute">yml</span>: <span class="hljs-string">'yaml'</span>
-  <span class="hljs-attribute">yaml</span>: <span class="hljs-string">'yaml'</span>
-  <span class="hljs-attribute">js</span>: <span class="hljs-string">'js'</span>
-  <span class="hljs-attribute">javascript</span>: <span class="hljs-string">'javascript'</span>
-  <span class="hljs-attribute">json</span>: <span class="hljs-string">'json'</span>
-  <span class="hljs-attribute">cson</span>: <span class="hljs-string">'cson'</span>
-  <span class="hljs-attribute">coffee</span>: <span class="hljs-string">'cson'</span>
-  <span class="hljs-attribute">xml</span>: <span class="hljs-string">'xml'</span>
-  <span class="hljs-attribute">ini</span>: <span class="hljs-string">'ini'</span>
-  <span class="hljs-attribute">properties</span>: <span class="hljs-string">'properties'</span></pre>
+  yml: <span class="hljs-string">'yaml'</span>
+  yaml: <span class="hljs-string">'yaml'</span>
+  js: <span class="hljs-string">'js'</span>
+  javascript: <span class="hljs-string">'javascript'</span>
+  json: <span class="hljs-string">'json'</span>
+  cson: <span class="hljs-string">'cson'</span>
+  coffee: <span class="hljs-string">'cson'</span>
+  xml: <span class="hljs-string">'xml'</span>
+  ini: <span class="hljs-string">'ini'</span>
+  properties: <span class="hljs-string">'properties'</span></pre>
         </td>
       </tr>
     
@@ -241,7 +241,9 @@ exports.format = <span class="hljs-function"><span class="hljs-params">(obj, for
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  lib.format obj, options, cb</pre>
+          <pre class="coffeescript">  lib.format obj, options, <span class="hljs-function"><span class="hljs-params">(err, text)</span> -&gt;</span>
+    debug chalk.grey <span class="hljs-string">"result:\n<span class="hljs-subst">#{text}</span>"</span>
+    cb err, text</pre>
         </td>
       </tr>
     
@@ -288,11 +290,11 @@ callback will be called with (err, object)</li>
     ext = path.extname(format).substring <span class="hljs-number">1</span>
     <span class="hljs-keyword">if</span> type = ext2parser[ext]
       i = detect.indexOf type
-      detect.splice i, <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> i &gt; -<span class="hljs-number">1</span>
+      detect.splice i, <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> i &gt; <span class="hljs-number">-1</span>
       detect.unshift type
   <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> format
     <span class="hljs-keyword">if</span> i = detect.indexOf format
-      detect.splice i, <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> i &gt; -<span class="hljs-number">1</span>
+      detect.splice i, <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> i &gt; <span class="hljs-number">-1</span>
       detect.unshift format</pre>
         </td>
       </tr>

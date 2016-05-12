@@ -56,6 +56,10 @@
         <a href="#string-greater-object">string -&amp;gt; object</a>
       </div>
 
+      <div class="heading h2">
+        <a href="#helper">Helper</a>
+      </div>
+
     </div>
   </div>
   <div id="sidebar-toggle"></div>
@@ -119,7 +123,13 @@ object -&gt; string
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">exports.format = <span class="hljs-function"><span class="hljs-params">(obj, options, cb)</span> -&gt;</span></pre>
+          <pre class="coffeescript">exports.format = <span class="hljs-function"><span class="hljs-params">(obj, options, cb)</span> -&gt;</span>
+  <span class="hljs-keyword">try</span>
+    text = properties.stringify flatten(obj),
+      unicode: <span class="hljs-literal">true</span>
+  <span class="hljs-keyword">catch</span> error
+    <span class="hljs-keyword">return</span> cb error <span class="hljs-keyword">if</span> error
+  cb <span class="hljs-literal">null</span>, text</pre>
         </td>
       </tr>
     
@@ -136,21 +146,94 @@ string -&gt; object
         <td class="code highlight">
           <pre class="coffeescript">exports.parse = <span class="hljs-function"><span class="hljs-params">(text, cb)</span> -&gt;</span>
   properties.parse text,
-    <span class="hljs-attribute">sections</span>: <span class="hljs-literal">true</span>
-    <span class="hljs-attribute">namespaces</span>: <span class="hljs-literal">true</span>
+    sections: <span class="hljs-literal">true</span>
+    namespaces: <span class="hljs-literal">true</span>
+    variables: <span class="hljs-literal">true</span>
   , <span class="hljs-function"><span class="hljs-params">(err, result)</span> -&gt;</span>
     <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> err
     <span class="hljs-keyword">unless</span> propertiesCheck result
       <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Unexpected characters []{}/ in key name found"</span>
-    cb <span class="hljs-literal">null</span>, result
-<span class="hljs-function">
-<span class="hljs-title">propertiesCheck</span> = <span class="hljs-params">(data)</span> -&gt;</span>
+    cb <span class="hljs-literal">null</span>, optimizeArray result</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="helper">
+  <h2>
+    <a href="#helper" name="helper" class="pilcrow"></a>
+Helper
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript"><span class="hljs-function"><span class="hljs-title">propertiesCheck</span> = <span class="hljs-params">(data)</span> -&gt;</span>
   <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> data <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
   <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">of</span> data
     <span class="hljs-keyword">if</span> v <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">or</span> ~<span class="hljs-string">'[]{}/'</span>.indexOf k.charAt <span class="hljs-number">0</span>
       <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
     <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span> <span class="hljs-keyword">unless</span> propertiesCheck v
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></pre>
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+<span class="hljs-function">
+<span class="hljs-title">flatten</span> = <span class="hljs-params">(obj)</span> -&gt;</span>
+  <span class="hljs-keyword">return</span> obj <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
+  flat = {}</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7"></a>
+</div>
+<p>recursive flatten</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">of</span> obj
+    <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> value <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
+      flat[key] = value
+    <span class="hljs-keyword">else</span>
+      <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">of</span> flatten value
+        flat[<span class="hljs-string">"<span class="hljs-subst">#{key}</span>.<span class="hljs-subst">#{k}</span>"</span>] = v
+  <span class="hljs-keyword">return</span> flat
+<span class="hljs-function">
+<span class="hljs-title">optimizeArray</span> = <span class="hljs-params">(obj)</span> -&gt;</span>
+  <span class="hljs-keyword">return</span> obj <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8"></a>
+</div>
+<p>resursive work further</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">of</span> obj
+    obj[key] = optimizeArray value</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-9" id="section-9"></a>
+</div>
+<p>replace with array if possible</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  keys = Object.keys obj
+  keys.sort()
+  <span class="hljs-keyword">if</span> keys.join(<span class="hljs-string">','</span>) <span class="hljs-keyword">is</span> [<span class="hljs-number">0.</span>.keys.length<span class="hljs-number">-1</span>].join(<span class="hljs-string">','</span>)
+    list = []
+    list.push obj[k] <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> keys
+    obj = list
+  obj</pre>
         </td>
       </tr>
     

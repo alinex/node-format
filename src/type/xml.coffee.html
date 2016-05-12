@@ -123,7 +123,13 @@ object -&gt; string
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">exports.format = <span class="hljs-function"><span class="hljs-params">(obj, options, cb)</span> -&gt;</span></pre>
+          <pre class="coffeescript">exports.format = <span class="hljs-function"><span class="hljs-params">(obj, options, cb)</span> -&gt;</span>
+  builder = <span class="hljs-keyword">new</span> xml2js.Builder()
+  <span class="hljs-keyword">try</span>
+    text = builder.buildObject obj
+  <span class="hljs-keyword">catch</span> error
+    <span class="hljs-keyword">return</span> cb error
+  cb <span class="hljs-literal">null</span>, text</pre>
         </td>
       </tr>
     
@@ -139,7 +145,7 @@ string -&gt; object
         </td>
         <td class="code highlight">
           <pre class="coffeescript">exports.parse = <span class="hljs-function"><span class="hljs-params">(text, cb)</span> -&gt;</span>
-  xml2js.parseString text, {<span class="hljs-attribute">explicitArray</span>: <span class="hljs-literal">false</span>}, <span class="hljs-function"><span class="hljs-params">(err, result)</span> -&gt;</span>
+  xml2js.parseString text, {explicitArray: <span class="hljs-literal">false</span>}, <span class="hljs-function"><span class="hljs-params">(err, result)</span> -&gt;</span>
     <span class="hljs-keyword">if</span> err
       <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error err.message.replace <span class="hljs-regexp">/\n/g</span>, <span class="hljs-string">' '</span></pre>
         </td>
