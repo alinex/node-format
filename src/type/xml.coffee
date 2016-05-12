@@ -12,10 +12,16 @@ xml2js = require 'xml2js'
 # object -> string
 # -------------------------------------------------
 exports.format = (obj, options, cb) ->
+  builder = new xml2js.Builder()
+  try
+    text = builder.buildObject obj
+  catch error
+    return cb error
+  cb null, text
 
 
 # string -> object
-# -------------------------------------------------
+#   -------------------------------------------------
 exports.parse = (text, cb) ->
   xml2js.parseString text, {explicitArray: false}, (err, result) ->
     if err
