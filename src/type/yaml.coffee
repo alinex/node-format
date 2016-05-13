@@ -26,7 +26,7 @@ exports.stringify = (obj, options, cb) ->
 
 # string -> object
 # -------------------------------------------------
-exports.parse = (text, cb) ->
+exports.parse = (text, _, cb) ->
   try
     obj = yaml.safeLoad text
   catch error

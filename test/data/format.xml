@@ -16,11 +16,12 @@
   </person>
 
   <!-- cdata section -->
-  <cdata><![CDATA[i\'m not escaped: <xml>!]]></cdata>
+  <cdata><![CDATA[i'm not escaped: <xml>!]]></cdata>
 
   <!-- using attributes -->
   <attributes type="detail">
     Hello all together
+    <sub>And specially you!</sub>
   </attributes>
 
 </xml>

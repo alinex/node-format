@@ -50,7 +50,7 @@ describe "JSON", ->
   describe "format and parse", ->
 
     it "should reread object", (cb) ->
-      formatter.format data, format, (err, text) ->
+      formatter.stringify data, format, (err, text) ->
         expect(err, 'error').to.not.exist
         expect(typeof text, 'type of result').to.equal 'string'
         debug "result", chalk.grey text
@@ -59,7 +59,7 @@ describe "JSON", ->
           cb()
 
     it "should format with indent", (cb) ->
-      formatter.format data, format,
+      formatter.stringify data, format,
         indent: 0
       , (err, text) ->
         expect(err, 'error').to.not.exist

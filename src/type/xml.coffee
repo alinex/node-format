@@ -14,7 +14,10 @@ xml2js = require 'xml2js'
 exports.stringify = (obj, options, cb) ->
   builder = new xml2js.Builder()
   try
-    text = builder.buildObject obj
+    text = builder.buildObject obj,
+#      charkey: 'value'
+      rootName: options?.root ? 'xml'
+      cdata: true
   catch error
     return cb error
   cb null, text
@@ -22,12 +25,20 @@ exports.stringify = (obj, options, cb) ->
 
 # string -> object
 #   -------------------------------------------------
-exports.parse = (text, cb) ->
-  xml2js.parseString text, {explicitArray: false}, (err, result) ->
+exports.parse = (text, options, cb) ->
+  xml2js.parseString text,
+    explicitRoot: options?.explicitRoot ? false
+    explicitArray: false
+    trim: true
+    emptyTag: null
+    ignoreAttrs: options?.ignoreAttrs
+    mergeAttrs: true
+#    charkey: 'value'
+  , (err, result) ->
     if err
       return cb new Error err.message.replace /\n/g, ' '
     # optimize result of attributes
-    cb null, xmlOptimize result
+    cb null, result
 
 # ### Optimize parsed cml
 xmlOptimize = (data) ->

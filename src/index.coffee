@@ -84,10 +84,13 @@ exports.stringify = (obj, format, options, cb) ->
 #   formatter to use or filename to read format from
 # * `cb`
 #   callback will be called with (err, object)
-exports.parse = (text, format, cb) ->
+exports.parse = (text, format, options, cb) ->
   if typeof format is 'function'
     cb = format
     format = null
+  if typeof options is 'function'
+    cb = options
+    options = null
   debug "start parsing #{format ? 'unknown'} format"
   # get list of parsers to check
   detect = autoDetect[0..]
@@ -112,7 +115,7 @@ exports.parse = (text, format, cb) ->
     catch error
       return cb "Couldn't load #{format} library: #{error.message}"
     # run parser
-    lib.parse text, (err, result) ->
+    lib.parse text, options, (err, result) ->
       if err
         debug chalk.grey "#{format}: #{err.message}"
         errors.push err.message

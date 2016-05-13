@@ -22,7 +22,7 @@ exports.stringify = (obj, options, cb) ->
 
 # string -> object
 # -------------------------------------------------
-exports.parse = (text, cb) ->
+exports.parse = (text, _, cb) ->
   properties.parse text,
     sections: true
     namespaces: true

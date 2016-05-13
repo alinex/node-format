@@ -19,7 +19,7 @@ exports.stringify = (obj, options, cb) ->
 
 # string -> object
 # -------------------------------------------------
-exports.parse = (text, cb) ->
+exports.parse = (text, _, cb) ->
   coffee ?= require 'coffee-script'
   try
     text = "module.exports =\n  " + text.replace /\n/g, '\n  '

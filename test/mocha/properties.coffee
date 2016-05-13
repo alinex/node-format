@@ -7,7 +7,7 @@ chalk = require 'chalk'
 
 formatter = require '../../src/index'
 
-describe "INI", ->
+describe "Properties", ->
 
   file = __dirname + '/../data/format.properties'
   format = 'properties'
@@ -50,7 +50,7 @@ describe "INI", ->
   describe "format and parse", ->
 
     it "should reread object", (cb) ->
-      formatter.format data, format, (err, text) ->
+      formatter.stringify data, format, (err, text) ->
         expect(err, 'error').to.not.exist
         expect(typeof text, 'type of result').to.equal 'string'
         debug "result", chalk.grey text

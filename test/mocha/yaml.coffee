@@ -30,17 +30,17 @@ describe "YAML", ->
     fixed: 1230.15
     'negative infinity': -Infinity
     'not a number': NaN
-    list: [ 'one', 'two', 'three' ]
-    list2: [ 'one', 'two', 'three' ]
-    person: { name: 'Alexander Schilling', job: 'Developer' }
-    complex: [ { name: 'Egon' }, { name: 'Janina' } ]
+    list: ['one', 'two', 'three']
+    list2: ['one', 'two', 'three']
+    person: {name: 'Alexander Schilling', job: 'Developer'}
+    complex: [{name: 'Egon'}, {name: 'Janina'}]
     multiline: 'This text will be read as one line without linebreaks.'
     multilineQuoted: 'This text will be read as one line without linebreaks.'
     lineBreaks: 'This text will keep\nas it is and all line\nbreaks will be kept.\n'
     lineSingle: 'This text will be read as one line without linebreaks.\n'
     lineBreak: 'The empty line\nwill be a line break.\n'
-    address1: { city: 'Stuttgart' }
-    address2: { city: 'Stuttgart' }
+    address1: {city: 'Stuttgart'}
+    address2: {city: 'Stuttgart'}
     numberString: '123'
     numberString2: '123'
     picture: Buffer.from 'R0lGODdhDQAIAIAAAAAAANnZ2SwAAAAADQAIAAACF4SDGQar3xxbJ9p0qa7R0YxwzaFME1IAADs=', 'base64'
@@ -69,7 +69,7 @@ describe "YAML", ->
   describe "format and parse", ->
 
     it "should reread object", (cb) ->
-      formatter.format data, format, (err, text) ->
+      formatter.stringify data, format, (err, text) ->
         expect(err, 'error').to.not.exist
         expect(typeof text, 'type of result').to.equal 'string'
         debug "result", chalk.grey text

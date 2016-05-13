@@ -17,7 +17,7 @@ exports.stringify = (obj, options, cb) ->
 
 # string -> object
 # -------------------------------------------------
-exports.parse = (text, cb) ->
+exports.parse = (text, _, cb) ->
   vm ?= require 'vm'
   try
     result = vm.runInNewContext "x=#{text}"

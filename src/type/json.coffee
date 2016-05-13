@@ -10,7 +10,7 @@ exports.stringify = (obj, options, cb) ->
 
 # string -> object
 # -------------------------------------------------
-exports.parse = (text, cb) ->
+exports.parse = (text, _, cb) ->
   try
     result = JSON.parse text
   catch error

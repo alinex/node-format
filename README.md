@@ -95,7 +95,8 @@ The following table will give a short comparison.
 | Coffee  |   +++    |  allow   |   yes  |  yes | read |   no |
 | YAML    |   +++    |  allow   |   yes  |  yes |   no | read |
 | INI     |    ++    |  allow   |   yes  |  yes |   no |   no |
-| Properties | ++    |  allow   |   yes  |  yes |   no |  yes |
+| Properties | ++    |  allow   |   yes  |  yes |   no | read |
+| XML     |     +    |  allow   |   yes  |  yes |   no |   no |
 
 Legend: +++ to --- = good to bad; no = not possible; allow = allowed but unused;
 read = only red but not written; write = only written but not red; yes = fully
@@ -438,7 +439,7 @@ The group name defines the object to add the properties to.
 
 __Format Options:__
 
-- `whitespace` - should spaces be put arround `=` (defaults to true)
+- `whitespace` - (boolean) should spaces be put arround `=` (defaults to true)
 
 ### PROPERTIES
 
@@ -485,10 +486,6 @@ This format supports:
 - references to other values with `${key}`
 - references work also as section names or reference name
 
-
-
-
-
 ### XML
 
 The XML format should only use Tags and values, but no arguments.
@@ -498,6 +495,14 @@ Common file extension `xml`.
 ``` xml
 ```
 
+__Format Options:__
+
+- `root` - (string) name of the root element (default: 'xml')
+
+__Parse Options:__
+
+- `explicitRoot` - (boolean) keep the root element (default: false)
+- `ignoreAttrs` - (boolean) ignore attribute settings (default: false)
 
 License
 -------------------------------------------------
