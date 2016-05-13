@@ -12,7 +12,7 @@ CSON = null # load on demand
 
 # object -> string
 # -------------------------------------------------
-exports.format = (obj, options, cb) ->
+exports.stringify = (obj, options, cb) ->
   CSON ?= require 'cson-parser'
   cb null, CSON.stringify obj, null, options?.indent ? 2
 

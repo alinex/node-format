@@ -11,7 +11,7 @@ ini = require 'ini'
 
 # object -> string
 # -------------------------------------------------
-exports.format = (obj, options, cb) ->
+exports.stringify = (obj, options, cb) ->
   try
     text = ini.encode obj,
       whitespace: if options?.whitespace? then options.whitespace else true

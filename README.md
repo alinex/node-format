@@ -51,7 +51,7 @@ formatter = require 'alinex-formatter'
 
 This gives you back the main formatter instance which holds two methods to use:
 
-### format
+### stringify
 
 Serialize data object into string.
 

@@ -11,7 +11,7 @@ vm = null # load on demand
 
 # object -> string
 # -------------------------------------------------
-exports.format = (obj, options, cb) ->
+exports.stringify = (obj, options, cb) ->
   cb null, JSON.stringify obj, null, options?.indent ? 2
 
 

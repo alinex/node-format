@@ -11,7 +11,7 @@ properties = require 'properties'
 
 # object -> string
 # -------------------------------------------------
-exports.format = (obj, options, cb) ->
+exports.stringify = (obj, options, cb) ->
   try
     text = properties.stringify flatten(obj),
       unicode: true

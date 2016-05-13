@@ -52,7 +52,7 @@ ext2parser =
 # * `cb`
 #   callback will be called with (err, text)
 
-exports.format = (obj, format, options, cb) ->
+exports.stringify = (obj, format, options, cb) ->
   debug "format object as #{format}"
   if typeof options is 'function'
     cb = options
@@ -67,7 +67,7 @@ exports.format = (obj, format, options, cb) ->
   catch error
     return cb "Couldn't load #{format} library: #{error.message}"
   # format
-  lib.format obj, options, (err, text) ->
+  lib.stringify obj, options, (err, text) ->
     debug chalk.grey "result:\n#{text}"
     cb err, text
 

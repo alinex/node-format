@@ -11,7 +11,7 @@ CSON = require 'cson-parser'
 
 # object -> string
 # -------------------------------------------------
-exports.format = (obj, options, cb) ->
+exports.stringify = (obj, options, cb) ->
   cb null, CSON.stringify obj, null, options?.indent ? 2
 
 

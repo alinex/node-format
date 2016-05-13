@@ -11,7 +11,7 @@ yaml = require 'js-yaml'
 
 # object -> string
 # -------------------------------------------------
-exports.format = (obj, options, cb) ->
+exports.stringify = (obj, options, cb) ->
   try
     text = yaml.safeDump obj
 #      indent: options?.indent ? 2

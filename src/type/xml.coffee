@@ -11,7 +11,7 @@ xml2js = require 'xml2js'
 
 # object -> string
 # -------------------------------------------------
-exports.format = (obj, options, cb) ->
+exports.stringify = (obj, options, cb) ->
   builder = new xml2js.Builder()
   try
     text = builder.buildObject obj
