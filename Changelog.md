@@ -4,6 +4,12 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.0 (2016-05-13)
+-------------------------------------------------
+- Upgraded builder package.
+- Added support for xml.
+- Rename format() -> stringify().
+
 Version 0.2.1 (2016-05-12)
 -------------------------------------------------
 - Fixed changelog.
