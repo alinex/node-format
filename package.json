@@ -42,7 +42,7 @@
     "debug": "^2.2.0"
   },
   "devDependencies": {
-    "alinex-builder": "^2.0.0",
+    "alinex-builder": "^2.0.8",
     "chai": "^3.5.0"
   },
   "optionalDependencies": {},
