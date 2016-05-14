@@ -4,6 +4,13 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.0.0 (2016-05-14)
+-------------------------------------------------
+- Removed unused iconv-lite package.
+- Optimized file extension list for auto detect.
+- Add suport for csv for table data.
+- Add BSON format support.
+
 Version 0.3.0 (2016-05-13)
 -------------------------------------------------
 - Upgraded builder package.
