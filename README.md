@@ -97,6 +97,7 @@ The following table will give a short comparison.
 | INI     |    ++    |  allow   |   yes  |  yes |   no |   no |
 | Properties | ++    |  allow   |   yes  |  yes |   no | read |
 | XML     |     +    |  allow   |   yes  |  yes |   no |   no |
+| BSON    |    --    |     no   |   yes  |  yes |   no |   no |
 
 Legend: +++ to --- = good to bad; no = not possible; allow = allowed but unused;
 read = only red but not written; write = only written but not red; yes = fully
@@ -493,6 +494,33 @@ The XML format should only use Tags and values, but no arguments.
 Common file extension `xml`.
 
 ``` xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- use an object -->
+<xml>
+
+  <!-- include a string -->
+  <name>test</name>
+
+  <!-- and a list of numbers -->
+  <list>1</list>
+  <list>2</list>
+  <list>3</list>
+
+  <!-- sub object -->
+  <person>
+    <name>Alexander Schilling</name><job>Developer</job>
+  </person>
+
+  <!-- cdata section -->
+  <cdata><![CDATA[i'm not escaped: <xml>!]]></cdata>
+
+  <!-- using attributes -->
+  <attributes type="detail">
+    Hello all together
+    <sub>And specially you!</sub>
+  </attributes>
+
+</xml>
 ```
 
 __Format Options:__
@@ -503,6 +531,15 @@ __Parse Options:__
 
 - `explicitRoot` - (boolean) keep the root element (default: false)
 - `ignoreAttrs` - (boolean) ignore attribute settings (default: false)
+
+
+### BSON
+
+Binary JSON is a more compressed version of JSON but not human readable because it's a
+binary format. It is mainly used in the MongoDB database.
+
+Common file extension `bson`.
+
 
 License
 -------------------------------------------------

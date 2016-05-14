@@ -16,6 +16,7 @@ util = require 'util'
 # -------------------------------------------------
 
 autoDetect = [
+  'bson'
   'xml'
   'ini'
   'properties'
@@ -33,8 +34,9 @@ ext2parser =
   js: 'js'
   javascript: 'javascript'
   json: 'json'
+  bson: 'bson'
   cson: 'cson'
-  coffee: 'cson'
+  coffee: 'coffee'
   xml: 'xml'
   ini: 'ini'
   properties: 'properties'
