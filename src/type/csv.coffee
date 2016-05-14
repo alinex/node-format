@@ -8,13 +8,11 @@
 # include base modules
 parser = null # load on demand
 stringifyer = null # load on demand
-#iconv = null # load on demand
 
 # object -> string
 # -------------------------------------------------
 exports.stringify = (obj, options, cb) ->
   stringifyer ?= require 'csv-stringify'
-#  iconv ?= require 'iconv-lite'
   stringifyer obj,
     columns: options?.columns
     delimiter: options?.delimiter ? ';'
@@ -25,7 +23,7 @@ exports.stringify = (obj, options, cb) ->
     quotedEmpty: options?.quotedEmpty ? false
     quotedString: options?.quotedString ? false
   , cb
-#        content: iconv.encode string, 'windows1252'
+
 
 # string -> object
 # -------------------------------------------------
