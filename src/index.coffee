@@ -41,7 +41,6 @@ ext2parser =
   xml: 'xml'
   ini: 'ini'
   properties: 'properties'
-  csv: 'csv'
 
 
 # Format Object into String
