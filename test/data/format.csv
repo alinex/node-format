@@ -1,0 +1,11 @@
+num;type;object
+1;null;
+2;undefined;
+3;boolean;1
+4;number;5.6
+5;text;Hello
+6;quotes;"Give me a ""hand up"""
+7;date;128182440000
+8;list;[1,2,3]
+9;object;"{""name"":""Egon""}"
+10;complex;"[{""name"":""Valentina""},{""name"":""Nadine""},{""name"":""Sven""}]"

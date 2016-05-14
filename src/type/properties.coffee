@@ -23,7 +23,7 @@ exports.stringify = (obj, options, cb) ->
 # string -> object
 # -------------------------------------------------
 exports.parse = (text, _, cb) ->
-  properties.parse text,
+  properties.parse text.toString(),
     sections: true
     namespaces: true
     variables: true

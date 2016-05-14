@@ -98,6 +98,7 @@ The following table will give a short comparison.
 | Properties | ++    |  allow   |   yes  |  yes |   no | read |
 | XML     |     +    |  allow   |   yes  |  yes |   no |   no |
 | BSON    |    --    |     no   |   yes  |  yes |   no |   no |
+| CSV     |     +    |    (no)  |   yes  | (yes)|   no |   no |
 
 Legend: +++ to --- = good to bad; no = not possible; allow = allowed but unused;
 read = only red but not written; write = only written but not red; yes = fully
@@ -539,6 +540,58 @@ Binary JSON is a more compressed version of JSON but not human readable because 
 binary format. It is mainly used in the MongoDB database.
 
 Common file extension `bson`.
+
+### CSV
+
+The CSV format should only be used with table like data which is in the form of
+a list of lists. See the [table](http://alinex.github.io/node-table) package to
+transform and work with such data.
+
+Autodetection is not possible here.
+
+Common file extension `csv`.
+
+``` csv
+num;type;object
+1;null;
+2;undefined;
+3;boolean;1
+4;number;5.6
+5;text;Hello
+6;quotes;"Give me a ""hand up"""
+7;date;128182440000
+8;list;[1,2,3]
+9;object;"{""name"":""Egon""}"
+10;complex;"[{""name"":""Valentina""},{""name"":""Nadine""},{""name"":""Sven""}]"
+```
+
+While some types are fully supported: string, number
+
+Others are partly supported and won't be automatically detectable:
+
+- boolean as integer
+- date as unix time integer
+- null and undefined as empty string
+
+And lastly complex sub objects will be stored as JSON text and be automatically
+parsed on read again.
+
+__Format Options:__
+
+- `columns` List of fields, applied when transform returns an object, order matters, read the transformer documentation for additionnal information, columns are auto discovered in the first record when the user write objects, can refer to nested properties of the input JSON, see the "header" option on how to print columns names on the first line.
+- `delimiter` Set the field delimiter (default: ';')
+- `escape` - (char) Set the escape character (Default: '"')
+- `quote` - (char) Optionnal character surrounding a field, one character only (Default: '"')
+- `quoted` - (boolean) quote all the non-empty fields even if not required (default: false)
+- `quotedEmpty` - (boolean) quote empty fields? (default: false)
+- `quotedString` - (boolean) quote all fields of type string even if not required (default: false)
+
+__Parse Options:__
+
+- `delimiter` - (char) Set the field delimiter (default: ';')
+- `quote` - (char) Optionnal character surrounding a field, one character only (Default: '"')
+- `escape` - (char) Set the escape character (Default: '"')
+- `comment` - (char) Treat all the characters after this one as a comment, default to '' (disabled).
 
 
 License

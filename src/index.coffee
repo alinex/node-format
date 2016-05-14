@@ -29,6 +29,7 @@ autoDetect = [
 
 # ### Extension to Parser
 ext2parser =
+  csv: 'csv'
   yml: 'yaml'
   yaml: 'yaml'
   js: 'js'
@@ -40,6 +41,8 @@ ext2parser =
   xml: 'xml'
   ini: 'ini'
   properties: 'properties'
+  csv: 'csv'
+
 
 # Format Object into String
 # -------------------------------------------------
