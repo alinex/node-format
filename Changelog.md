@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.0.1 (2016-05-16)
+-------------------------------------------------
+- Add reference to index.
+
 Version 1.0.0 (2016-05-14)
 -------------------------------------------------
 - Removed unused iconv-lite package.
