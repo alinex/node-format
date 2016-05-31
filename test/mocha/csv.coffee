@@ -8,7 +8,7 @@ Table = require 'alinex-table'
 
 formatter = require '../../src/index'
 
-describe.only "CSV", ->
+describe "CSV", ->
 
   file = __dirname + '/../data/format.csv'
   format = 'csv'
