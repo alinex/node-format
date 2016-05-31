@@ -571,7 +571,7 @@ Others are partly supported and won't be automatically detectable:
 
 - boolean as integer
 - date as unix time integer
-- null and undefined as empty string
+- null, undefined and empty strings are stored the same way and wil be red as null
 
 And lastly complex sub objects will be stored as JSON text and be automatically
 parsed on read again.

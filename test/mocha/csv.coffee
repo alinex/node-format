@@ -51,8 +51,20 @@ describe.only "CSV", ->
         expect(err, 'error').to.not.exist
 # used to create the example file
 #        fs.writeFile __dirname + '/../data/format.csv', text
-        expect(typeof text, 'type of result').to.equal 'string'
         debug "result", chalk.grey text
+        expect(typeof text, 'type of result').to.equal 'string'
+        formatter.parse text, format, (err, obj) ->
+          expect(obj, 'reread object').to.deep.equal data
+          cb()
+
+  describe "table", ->
+
+    it "should reread object", (cb) ->
+      table = new Table data
+      formatter.stringify table, format, (err, text) ->
+        expect(err, 'error').to.not.exist
+        debug "result", chalk.grey text
+        expect(typeof text, 'type of result').to.equal 'string'
         formatter.parse text, format, (err, obj) ->
           expect(obj, 'reread object').to.deep.equal data
           cb()

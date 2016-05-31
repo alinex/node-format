@@ -12,6 +12,7 @@ stringifyer = null # load on demand
 # object -> string
 # -------------------------------------------------
 exports.stringify = (obj, options, cb) ->
+  obj = obj.data if obj.data
   stringifyer ?= require 'csv-stringify'
   stringifyer obj,
     columns: options?.columns
