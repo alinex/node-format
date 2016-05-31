@@ -41,6 +41,7 @@ exports.parse = (text, options, cb) ->
     # optimize objects from json
     cb null, obj.map (line) ->
       line.map (field) ->
+        return null if field is ''
         return field unless typeof field is 'string' and field[0] in ['[', '{']
         try
           result = JSON.parse field

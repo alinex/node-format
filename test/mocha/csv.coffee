@@ -2,12 +2,13 @@ chai = require 'chai'
 expect = chai.expect
 ### eslint-env node, mocha ###
 fs = require 'fs'
-debug = require('debug') 'test'
+debug = require('debug') 'test:csv'
 chalk = require 'chalk'
+Table = require 'alinex-table'
 
 formatter = require '../../src/index'
 
-describe "CSV", ->
+describe.only "CSV", ->
 
   file = __dirname + '/../data/format.csv'
   format = 'csv'
@@ -15,8 +16,8 @@ describe "CSV", ->
   source = null
   data = [
     [ 'num', 'type', 'object' ]
-    [ 1, 'null', '' ]
-    [ 2, 'undefined', '' ]
+    [ 1, 'null', null ]
+    [ 2, 'undefined', null ]
     [ 3, 'boolean', 1 ]
     [ 4, 'number', 5.6 ]
     [ 5, 'text', "Hello" ]
@@ -45,6 +46,7 @@ describe "CSV", ->
   describe "format and parse", ->
 
     it "should reread object", (cb) ->
+      source = data
       formatter.stringify source, format, (err, text) ->
         expect(err, 'error').to.not.exist
 # used to create the example file

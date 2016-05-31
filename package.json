@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "alinex-builder": "^2.1.2",
+    "alinex-table": "^1.2.2",
     "chai": "^3.5.0"
   },
   "optionalDependencies": {},
