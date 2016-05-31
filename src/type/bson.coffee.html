@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>json.coffee</title>
+  <title>bson.coffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" media="all" href="../../doc-style.css" />
   <script src="../../doc-filelist.js"></script>
   <script>
     var relativeDir = "../../";
-    var thisFile = "src/type/json.coffee";
+    var thisFile = "src/type/bson.coffee";
     var defaultSidebar = true;
   </script>
   <script src="../../doc-script.js"></script>
@@ -72,7 +72,9 @@ Serializer for json syntax
 
         </td>
         <td class="code highlight">
-          
+          <pre class="coffeescript">
+bson = <span class="hljs-built_in">require</span> <span class="hljs-string">'bson'</span>
+BSON = <span class="hljs-keyword">new</span> bson.BSONPure.BSON()</pre>
         </td>
       </tr>
     
@@ -88,7 +90,7 @@ object -&gt; string
         </td>
         <td class="code highlight">
           <pre class="coffeescript">exports.stringify = <span class="hljs-function"><span class="hljs-params">(obj, options, cb)</span> -&gt;</span>
-  cb <span class="hljs-literal">null</span>, JSON.stringify obj, <span class="hljs-literal">null</span>, options?.indent ? <span class="hljs-number">2</span></pre>
+  cb <span class="hljs-literal">null</span>, BSON.serialize obj</pre>
         </td>
       </tr>
     
@@ -105,7 +107,7 @@ string -&gt; object
         <td class="code highlight">
           <pre class="coffeescript">exports.parse = <span class="hljs-function"><span class="hljs-params">(text, _, cb)</span> -&gt;</span>
   <span class="hljs-keyword">try</span>
-    result = JSON.parse text
+    result = BSON.deserialize text
   <span class="hljs-keyword">catch</span> error
     <span class="hljs-keyword">return</span> cb error
   cb <span class="hljs-literal">null</span>, result</pre>

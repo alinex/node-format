@@ -133,6 +133,7 @@ Setup
         <td class="code highlight">
           <pre class="coffeescript">
 autoDetect = [
+  <span class="hljs-string">'bson'</span>
   <span class="hljs-string">'xml'</span>
   <span class="hljs-string">'ini'</span>
   <span class="hljs-string">'properties'</span>
@@ -157,13 +158,15 @@ Extension to Parser
         </td>
         <td class="code highlight">
           <pre class="coffeescript">ext2parser =
+  csv: <span class="hljs-string">'csv'</span>
   yml: <span class="hljs-string">'yaml'</span>
   yaml: <span class="hljs-string">'yaml'</span>
   js: <span class="hljs-string">'js'</span>
   javascript: <span class="hljs-string">'javascript'</span>
   json: <span class="hljs-string">'json'</span>
+  bson: <span class="hljs-string">'bson'</span>
   cson: <span class="hljs-string">'cson'</span>
-  coffee: <span class="hljs-string">'cson'</span>
+  coffee: <span class="hljs-string">'coffee'</span>
   xml: <span class="hljs-string">'xml'</span>
   ini: <span class="hljs-string">'ini'</span>
   properties: <span class="hljs-string">'properties'</span></pre>
@@ -193,7 +196,7 @@ callback will be called with (err, text)</li>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">
-exports.format = <span class="hljs-function"><span class="hljs-params">(obj, format, options, cb)</span> -&gt;</span>
+exports.stringify = <span class="hljs-function"><span class="hljs-params">(obj, format, options, cb)</span> -&gt;</span>
   debug <span class="hljs-string">"format object as <span class="hljs-subst">#{format}</span>"</span>
   <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> options <span class="hljs-keyword">is</span> <span class="hljs-string">'function'</span>
     cb = options
@@ -241,7 +244,7 @@ exports.format = <span class="hljs-function"><span class="hljs-params">(obj, for
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  lib.format obj, options, <span class="hljs-function"><span class="hljs-params">(err, text)</span> -&gt;</span>
+          <pre class="coffeescript">  lib.stringify obj, options, <span class="hljs-function"><span class="hljs-params">(err, text)</span> -&gt;</span>
     debug chalk.grey <span class="hljs-string">"result:\n<span class="hljs-subst">#{text}</span>"</span>
     cb err, text</pre>
         </td>
@@ -268,10 +271,13 @@ callback will be called with (err, object)</li>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">exports.parse = <span class="hljs-function"><span class="hljs-params">(text, format, cb)</span> -&gt;</span>
+          <pre class="coffeescript">exports.parse = <span class="hljs-function"><span class="hljs-params">(text, format, options, cb)</span> -&gt;</span>
   <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> format <span class="hljs-keyword">is</span> <span class="hljs-string">'function'</span>
     cb = format
     format = <span class="hljs-literal">null</span>
+  <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> options <span class="hljs-keyword">is</span> <span class="hljs-string">'function'</span>
+    cb = options
+    options = <span class="hljs-literal">null</span>
   debug <span class="hljs-string">"start parsing <span class="hljs-subst">#{format ? <span class="hljs-string">'unknown'</span>}</span> format"</span></pre>
         </td>
       </tr>
@@ -340,7 +346,7 @@ callback will be called with (err, object)</li>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">    lib.parse text, <span class="hljs-function"><span class="hljs-params">(err, result)</span> -&gt;</span>
+          <pre class="coffeescript">    lib.parse text, options, <span class="hljs-function"><span class="hljs-params">(err, result)</span> -&gt;</span>
       <span class="hljs-keyword">if</span> err
         debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{format}</span>: <span class="hljs-subst">#{err.message}</span>"</span>
         errors.push err.message

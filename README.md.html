@@ -53,7 +53,7 @@
       </div>
 
       <div class="heading h3">
-        <a href="#format">format</a>
+        <a href="#stringify">stringify</a>
       </div>
 
       <div class="heading h3">
@@ -94,6 +94,14 @@
 
       <div class="heading h3">
         <a href="#xml">XML</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#bson">BSON</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#csv">CSV</a>
       </div>
 
       <div class="heading h2">
@@ -152,10 +160,10 @@ Usage
 <pre><code class="coffee">formatter = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-formatter'</span>
 </code></pre>
 <p>This gives you back the main formatter instance which holds two methods to use:</p>
-<div class="pilwrap" id="format">
+<div class="pilwrap" id="stringify">
   <h3>
-    <a href="#format" name="format" class="pilcrow"></a>
-format
+    <a href="#stringify" name="stringify" class="pilcrow"></a>
+stringify
   </h3>
 </div>
 <p>Serialize data object into string.</p>
@@ -268,7 +276,34 @@ Formats
 <td style="text-align:center">yes</td>
 <td style="text-align:center">yes</td>
 <td style="text-align:center">no</td>
+<td style="text-align:center">read</td>
+</tr>
+<tr>
+<td style="text-align:left">XML</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">allow</td>
 <td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">BSON</td>
+<td style="text-align:center">--</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">CSV</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">(no)</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">(yes)</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
 </tr>
 </tbody>
 </table>
@@ -601,7 +636,7 @@ allows also complex objects through extended groups.</p>
 The group name defines the object to add the properties to.</p>
 <p><strong>Format Options:</strong></p>
 <ul>
-<li><code>whitespace</code> - should spaces be put arround <code>=</code> (defaults to true)</li>
+<li><code>whitespace</code> - (boolean) should spaces be put arround <code>=</code> (defaults to true)</li>
 </ul>
 <div class="pilwrap" id="properties">
   <h3>
@@ -656,7 +691,101 @@ XML
 </div>
 <p>The XML format should only use Tags and values, but no arguments.</p>
 <p>Common file extension <code>xml</code>.</p>
-<pre><code class="xml"></code></pre>
+<pre><code class="xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-comment">&lt;!-- use an object --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- include a string --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- and a list of numbers --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- sub object --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">person</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Alexander Schilling<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">job</span>&gt;</span>Developer<span class="hljs-tag">&lt;/<span class="hljs-name">job</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">person</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- cdata section --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">cdata</span>&gt;</span>&lt;![CDATA[i'm not escaped: &lt;xml&gt;!]]&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">cdata</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- using attributes --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">attributes</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"detail"</span>&gt;</span>
+    Hello all together
+    <span class="hljs-tag">&lt;<span class="hljs-name">sub</span>&gt;</span>And specially you!<span class="hljs-tag">&lt;/<span class="hljs-name">sub</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">attributes</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+</code></pre>
+<p><strong>Format Options:</strong></p>
+<ul>
+<li><code>root</code> - (string) name of the root element (default: 'xml')</li>
+</ul>
+<p><strong>Parse Options:</strong></p>
+<ul>
+<li><code>explicitRoot</code> - (boolean) keep the root element (default: false)</li>
+<li><code>ignoreAttrs</code> - (boolean) ignore attribute settings (default: false)</li>
+</ul>
+<div class="pilwrap" id="bson">
+  <h3>
+    <a href="#bson" name="bson" class="pilcrow"></a>
+BSON
+  </h3>
+</div>
+<p>Binary JSON is a more compressed version of JSON but not human readable because it's a
+binary format. It is mainly used in the MongoDB database.</p>
+<p>Common file extension <code>bson</code>.</p>
+<div class="pilwrap" id="csv">
+  <h3>
+    <a href="#csv" name="csv" class="pilcrow"></a>
+CSV
+  </h3>
+</div>
+<p>The CSV format should only be used with table like data which is in the form of
+a list of lists. See the <a href="http://alinex.github.io/node-table">table</a> package to
+transform and work with such data.</p>
+<p>Autodetection is not possible here.</p>
+<p>Common file extension <code>csv</code>.</p>
+<pre><code class="csv">num;type;object
+1;null;
+2;undefined;
+3;boolean;1
+4;number;5.6
+5;text;Hello
+6;quotes;&quot;Give me a &quot;&quot;hand up&quot;&quot;&quot;
+7;date;128182440000
+8;list;[1,2,3]
+9;object;&quot;{&quot;&quot;name&quot;&quot;:&quot;&quot;Egon&quot;&quot;}&quot;
+10;complex;&quot;[{&quot;&quot;name&quot;&quot;:&quot;&quot;Valentina&quot;&quot;},{&quot;&quot;name&quot;&quot;:&quot;&quot;Nadine&quot;&quot;},{&quot;&quot;name&quot;&quot;:&quot;&quot;Sven&quot;&quot;}]&quot;
+</code></pre>
+<p>While some types are fully supported: string, number</p>
+<p>Others are partly supported and won't be automatically detectable:</p>
+<ul>
+<li>boolean as integer</li>
+<li>date as unix time integer</li>
+<li>null, undefined and empty strings are stored the same way and wil be red as null</li>
+</ul>
+<p>And lastly complex sub objects will be stored as JSON text and be automatically
+parsed on read again.</p>
+<p><strong>Format Options:</strong></p>
+<ul>
+<li><code>columns</code> List of fields, applied when transform returns an object, order matters, read the transformer documentation for additionnal information, columns are auto discovered in the first record when the user write objects, can refer to nested properties of the input JSON, see the &quot;header&quot; option on how to print columns names on the first line.</li>
+<li><code>delimiter</code> Set the field delimiter (default: ';')</li>
+<li><code>escape</code> - (char) Set the escape character (Default: '&quot;')</li>
+<li><code>quote</code> - (char) Optionnal character surrounding a field, one character only (Default: '&quot;')</li>
+<li><code>quoted</code> - (boolean) quote all the non-empty fields even if not required (default: false)</li>
+<li><code>quotedEmpty</code> - (boolean) quote empty fields? (default: false)</li>
+<li><code>quotedString</code> - (boolean) quote all fields of type string even if not required (default: false)</li>
+</ul>
+<p><strong>Parse Options:</strong></p>
+<ul>
+<li><code>delimiter</code> - (char) Set the field delimiter (default: ';')</li>
+<li><code>quote</code> - (char) Optionnal character surrounding a field, one character only (Default: '&quot;')</li>
+<li><code>escape</code> - (char) Set the escape character (Default: '&quot;')</li>
+<li><code>comment</code> - (char) Treat all the characters after this one as a comment, default to '' (disabled).</li>
+</ul>
 <div class="pilwrap" id="license">
   <h2>
     <a href="#license" name="license" class="pilcrow"></a>

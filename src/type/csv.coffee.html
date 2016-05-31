@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>coffee.coffee</title>
+  <title>csv.coffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" media="all" href="../../doc-style.css" />
   <script src="../../doc-filelist.js"></script>
   <script>
     var relativeDir = "../../";
-    var thisFile = "src/type/coffee.coffee";
+    var thisFile = "src/type/csv.coffee";
     var defaultSidebar = true;
   </script>
   <script src="../../doc-script.js"></script>
@@ -41,7 +41,7 @@
     <div id="headings">
 
       <div class="heading h1">
-        <a href="#serializer-for-js-syntax">Serializer for js syntax</a>
+        <a href="#serializer-for-ini-syntax">Serializer for ini syntax</a>
       </div>
 
       <div class="heading h2">
@@ -67,10 +67,10 @@
     
       <tr>
         <td class="docs">
-          <div class="pilwrap" id="serializer-for-js-syntax">
+          <div class="pilwrap" id="serializer-for-ini-syntax">
   <h1>
-    <a href="#serializer-for-js-syntax" name="serializer-for-js-syntax" class="pilcrow"></a>
-Serializer for js syntax
+    <a href="#serializer-for-ini-syntax" name="serializer-for-ini-syntax" class="pilcrow"></a>
+Serializer for ini syntax
   </h1>
 </div>
 
@@ -104,8 +104,8 @@ Node Modules
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">coffee = <span class="hljs-literal">null</span> <span class="hljs-comment"># load on demand</span>
-CSON = <span class="hljs-literal">null</span> <span class="hljs-comment"># load on demand</span></pre>
+          <pre class="coffeescript">parser = <span class="hljs-literal">null</span> <span class="hljs-comment"># load on demand</span>
+stringifyer = <span class="hljs-literal">null</span> <span class="hljs-comment"># load on demand</span></pre>
         </td>
       </tr>
     
@@ -121,8 +121,18 @@ object -&gt; string
         </td>
         <td class="code highlight">
           <pre class="coffeescript">exports.stringify = <span class="hljs-function"><span class="hljs-params">(obj, options, cb)</span> -&gt;</span>
-  CSON ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'cson-parser'</span>
-  cb <span class="hljs-literal">null</span>, CSON.stringify obj, <span class="hljs-literal">null</span>, options?.indent ? <span class="hljs-number">2</span></pre>
+  obj = obj.data <span class="hljs-keyword">if</span> obj.data
+  stringifyer ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'csv-stringify'</span>
+  stringifyer obj,
+    columns: options?.columns
+    delimiter: options?.delimiter ? <span class="hljs-string">';'</span>
+    quote: options?.quote ? <span class="hljs-string">'"'</span>
+    escape: options?.escape ? <span class="hljs-string">'"'</span>
+    header: <span class="hljs-literal">true</span>
+    quoted: options?.quoted ? <span class="hljs-literal">false</span>
+    quotedEmpty: options?.quotedEmpty ? <span class="hljs-literal">false</span>
+    quotedString: options?.quotedString ? <span class="hljs-literal">false</span>
+  , cb</pre>
         </td>
       </tr>
     
@@ -137,15 +147,38 @@ string -&gt; object
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">exports.parse = <span class="hljs-function"><span class="hljs-params">(text, _, cb)</span> -&gt;</span>
-  coffee ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'coffee-script'</span>
-  <span class="hljs-keyword">try</span>
-    text = <span class="hljs-string">"module.exports =\n  "</span> + text.replace <span class="hljs-regexp">/\n/g</span>, <span class="hljs-string">'\n  '</span>
-    m = <span class="hljs-keyword">new</span> <span class="hljs-built_in">module</span>.constructor()
-    m._compile coffee.compile(text), <span class="hljs-string">'inline.coffee'</span>
-  <span class="hljs-keyword">catch</span> error
-    <span class="hljs-keyword">return</span> cb error
-  cb <span class="hljs-literal">null</span>, m.exports</pre>
+          <pre class="coffeescript">exports.parse = <span class="hljs-function"><span class="hljs-params">(text, options, cb)</span> -&gt;</span>
+  parser ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'csv-parse'</span>
+  parser text,
+    delimiter: options?.delimiter ? <span class="hljs-string">';'</span>
+    quote: options?.quote ? <span class="hljs-string">'"'</span>
+    escape: options?.escape ? <span class="hljs-string">'"'</span>
+    comment: options?.comment ? <span class="hljs-string">''</span>
+    auto_parse: <span class="hljs-literal">true</span>
+    auto_parse_date: <span class="hljs-literal">true</span>
+  , <span class="hljs-function"><span class="hljs-params">(err, obj)</span> -&gt;</span>
+    <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> err</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-6" id="section-6"></a>
+</div>
+<p>optimize objects from json</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    cb <span class="hljs-literal">null</span>, obj.map (line) -&gt;
+      line.map (field) -&gt;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">if</span> field <span class="hljs-keyword">is</span> <span class="hljs-string">''</span>
+        <span class="hljs-keyword">return</span> field <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> field <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span> <span class="hljs-keyword">and</span> field[<span class="hljs-number">0</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">'['</span>, <span class="hljs-string">'{'</span>]
+        <span class="hljs-keyword">try</span>
+          result = JSON.parse field
+        <span class="hljs-keyword">catch</span>
+          <span class="hljs-keyword">return</span> field
+        result</pre>
         </td>
       </tr>
     
