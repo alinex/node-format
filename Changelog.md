@@ -4,6 +4,13 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.1.0 (2016-05-31)
+-------------------------------------------------
+- Allow all tests to run.
+- Support table instance.
+- Fix null values to be stored as empty csv entries.
+- Upgraded builder package.
+
 Version 1.0.1 (2016-05-16)
 -------------------------------------------------
 - Add reference to index.
