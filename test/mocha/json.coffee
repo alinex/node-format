@@ -59,7 +59,7 @@ describe "JSON", ->
           cb()
 
     it "should format with indent", (cb) ->
-      formatter.stringify data, format,
+      formatter.stringify data, 'test.json',
         indent: 0
       , (err, text) ->
         expect(err, 'error').to.not.exist

@@ -27,7 +27,7 @@ exports.parse = (text, _, cb) ->
   catch error
     return cb error
   # detect failed parsing
-  if not result?
+  unless result? and Object.keys(result).length
     return cb new Error "could not parse any result"
   if result['{']
     return cb new Error "Unexpected token { at start"

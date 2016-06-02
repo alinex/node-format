@@ -39,26 +39,3 @@ exports.parse = (text, options, cb) ->
       return cb new Error err.message.replace /\n/g, ' '
     # optimize result of attributes
     cb null, result
-
-# ### Optimize parsed cml
-xmlOptimize = (data) ->
-  return data unless typeof data is 'object'
-  if Array.isArray data
-    # seep analyze array
-    result = []
-    for v in data
-      result.push xmlOptimize v
-    return result
-  result = {}
-  for k, v of data
-    # set value
-    if k is '_'
-      result.value = v
-    # set attributes
-    else if k is '$'
-      for s, w of xmlOptimize v
-        result[s] = w
-    # keep other but check contents
-    else
-      result[k] = xmlOptimize v
-  return result
