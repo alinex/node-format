@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.1.2 (2016-06-07)
+-------------------------------------------------
+- Renamed as alinex-format.
+
 Version 1.1.1 (2016-06-07)
 -------------------------------------------------
 - Announce renaming of package.
