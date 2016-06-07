@@ -5,6 +5,8 @@ Alinex Formatter
 [![Coverage Status](https://coveralls.io/repos/alinex/node-formatter/badge.png?branch=master)](https://coveralls.io/r/alinex/node-formatter?branch=master)
 [![Dependency Status](https://gemnasium.com/alinex/node-formatter.png)](https://gemnasium.com/alinex/node-formatter)
 
+> This package was renamed, please use (format)[http://alinex.github.io/node-format], now.
+
 This package will give you an easy way to serialize and deserialize different data
 objects into multiple formats.
 
