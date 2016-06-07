@@ -6,7 +6,7 @@
 # -------------------------------------------------
 
 # include base modules
-debug = require('debug') 'formatter'
+debug = require('debug') 'format'
 chalk = require 'chalk'
 async = require 'async'
 path = require 'path'
@@ -50,9 +50,9 @@ ext2parser =
 # * `obj`
 #   object to be formatted
 # * `format`
-#   formatter to use or filename to read format from
+#   format to use or filename to read format from
 # * `options` (optional)
-#   specific for the formatter
+#   specific for the format
 # * `cb`
 #   callback will be called with (err, text)
 
@@ -85,7 +85,7 @@ exports.stringify = (obj, format, options, cb) ->
 # * `string`
 #   text to be parsed
 # * `format` (optional)
-#   formatter to use or filename to read format from
+#   format to use or filename to read format from
 # * `cb`
 #   callback will be called with (err, object)
 exports.parse = (text, format, options, cb) ->

@@ -1,11 +1,9 @@
-Alinex Formatter
+Alinex Format
 =================================================
 
-[![Build Status](https://travis-ci.org/alinex/node-formatter.svg?branch=master)](https://travis-ci.org/alinex/node-formatter)
-[![Coverage Status](https://coveralls.io/repos/alinex/node-formatter/badge.png?branch=master)](https://coveralls.io/r/alinex/node-formatter?branch=master)
-[![Dependency Status](https://gemnasium.com/alinex/node-formatter.png)](https://gemnasium.com/alinex/node-formatter)
-
-> This package was renamed, please use (format)[http://alinex.github.io/node-format], now.
+[![Build Status](https://travis-ci.org/alinex/node-format.svg?branch=master)](https://travis-ci.org/alinex/node-format)
+[![Coverage Status](https://coveralls.io/repos/alinex/node-format/badge.png?branch=master)](https://coveralls.io/r/alinex/node-format?branch=master)
+[![Dependency Status](https://gemnasium.com/alinex/node-format.png)](https://gemnasium.com/alinex/node-format)
 
 This package will give you an easy way to serialize and deserialize different data
 objects into multiple formats.
@@ -23,21 +21,21 @@ The major features are:
 Install
 -------------------------------------------------
 
-[![NPM](https://nodei.co/npm/alinex-formatter.png?downloads=true&downloadRank=true&stars=true)
- ![Downloads](https://nodei.co/npm-dl/alinex-formatter.png?months=9&height=3)
-](https://www.npmjs.com/package/alinex-formatter)
+[![NPM](https://nodei.co/npm/alinex-format.png?downloads=true&downloadRank=true&stars=true)
+ ![Downloads](https://nodei.co/npm-dl/alinex-format.png?months=9&height=3)
+](https://www.npmjs.com/package/alinex-format)
 
 The easiest way is to let npm add the module directly to your modules
 (from within you node modules directory):
 
 ``` sh
-npm install alinex-formatter --save
+npm install alinex-format --save
 ```
 
 And update it to the latest version later:
 
 ``` sh
-npm update alinex-formatter --save
+npm update alinex-format --save
 ```
 
 Always have a look at the latest [changes](Changelog.md).
@@ -45,13 +43,13 @@ Always have a look at the latest [changes](Changelog.md).
 
 Usage
 -------------------------------------------------
-To use the formatter you have to load the module first:
+To use the format you have to load the module first:
 
 ``` coffee
-formatter = require 'alinex-formatter'
+format = require 'alinex-format'
 ```
 
-This gives you back the main formatter instance which holds two methods to use:
+This gives you back the main format instance which holds two methods to use:
 
 ### stringify
 
@@ -62,9 +60,9 @@ __Arguments:__
 * `obj`
   object to be formatted
 * `format`
-  formatter to use or filename to read format from
+  format to use or filename to read format from
 * `options` (optional)
-  specific for the formatter
+  specific for the format
 * `cb`
   callback will be called with (err, text)
 
@@ -77,7 +75,7 @@ __Arguments:__
 * `string`
   text to be parsed
 * `format` (optional)
-  formatter to use or filename to read format from
+  format to use or filename to read format from
 * `cb`
   callback will be called with (err, object)
 
