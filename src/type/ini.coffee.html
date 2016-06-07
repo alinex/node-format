@@ -157,7 +157,7 @@ string -&gt; object
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> result?
+          <pre class="coffeescript">  <span class="hljs-keyword">unless</span> result? <span class="hljs-keyword">and</span> Object.keys(result).length
     <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"could not parse any result"</span>
   <span class="hljs-keyword">if</span> result[<span class="hljs-string">'{'</span>]
     <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Unexpected token { at start"</span>

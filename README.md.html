@@ -41,7 +41,7 @@
     <div id="headings">
 
       <div class="heading h1">
-        <a href="#alinex-formatter">Alinex Formatter</a>
+        <a href="#alinex-format">Alinex Format</a>
       </div>
 
       <div class="heading h2">
@@ -112,15 +112,15 @@
   </div>
   <div id="sidebar-toggle"></div>
   <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-formatter" title="Fork me on GitHub"></a>
-    <div class="docs markdown"><div class="pilwrap" id="alinex-formatter">
+    <div class="docs markdown"><div class="pilwrap" id="alinex-format">
   <h1>
-    <a href="#alinex-formatter" name="alinex-formatter" class="pilcrow"></a>
-Alinex Formatter
+    <a href="#alinex-format" name="alinex-format" class="pilcrow"></a>
+Alinex Format
   </h1>
 </div>
-<p><a href="https://travis-ci.org/alinex/node-formatter"><img src="https://travis-ci.org/alinex/node-formatter.svg?branch=master" alt="Build Status"></a>
-<a href="https://coveralls.io/r/alinex/node-formatter?branch=master"><img src="https://coveralls.io/repos/alinex/node-formatter/badge.png?branch=master" alt="Coverage Status"></a>
-<a href="https://gemnasium.com/alinex/node-formatter"><img src="https://gemnasium.com/alinex/node-formatter.png" alt="Dependency Status"></a></p>
+<p><a href="https://travis-ci.org/alinex/node-format"><img src="https://travis-ci.org/alinex/node-format.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/alinex/node-format?branch=master"><img src="https://coveralls.io/repos/alinex/node-format/badge.png?branch=master" alt="Coverage Status"></a>
+<a href="https://gemnasium.com/alinex/node-format"><img src="https://gemnasium.com/alinex/node-format.png" alt="Dependency Status"></a></p>
 <p>This package will give you an easy way to serialize and deserialize different data
 objects into multiple formats.</p>
 <p>The major features are:</p>
@@ -139,15 +139,15 @@ following the code standards defined in the <a href="http://alinex.github.io/dev
 Install
   </h2>
 </div>
-<p><a href="https://www.npmjs.com/package/alinex-formatter"><img src="https://nodei.co/npm/alinex-formatter.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM">
-<img src="https://nodei.co/npm-dl/alinex-formatter.png?months=9&amp;height=3" alt="Downloads">
+<p><a href="https://www.npmjs.com/package/alinex-format"><img src="https://nodei.co/npm/alinex-format.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM">
+<img src="https://nodei.co/npm-dl/alinex-format.png?months=9&amp;height=3" alt="Downloads">
 </a></p>
 <p>The easiest way is to let npm add the module directly to your modules
 (from within you node modules directory):</p>
-<pre><code class="sh">npm install alinex-formatter --save
+<pre><code class="sh">npm install alinex-format --save
 </code></pre>
 <p>And update it to the latest version later:</p>
-<pre><code class="sh">npm update alinex-formatter --save
+<pre><code class="sh">npm update alinex-format --save
 </code></pre>
 <p>Always have a look at the latest <a href="Changelog.md.html">changes</a>.</p>
 <div class="pilwrap" id="usage">
@@ -156,10 +156,10 @@ Install
 Usage
   </h2>
 </div>
-<p>To use the formatter you have to load the module first:</p>
-<pre><code class="coffee">formatter = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-formatter'</span>
+<p>To use the format you have to load the module first:</p>
+<pre><code class="coffee">format = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-format'</span>
 </code></pre>
-<p>This gives you back the main formatter instance which holds two methods to use:</p>
+<p>This gives you back the main format instance which holds two methods to use:</p>
 <div class="pilwrap" id="stringify">
   <h3>
     <a href="#stringify" name="stringify" class="pilcrow"></a>
@@ -172,9 +172,9 @@ stringify
 <li><code>obj</code>
 object to be formatted</li>
 <li><code>format</code>
-formatter to use or filename to read format from</li>
+format to use or filename to read format from</li>
 <li><code>options</code> (optional)
-specific for the formatter</li>
+specific for the format</li>
 <li><code>cb</code>
 callback will be called with (err, text)</li>
 </ul>
@@ -190,7 +190,7 @@ parse
 <li><code>string</code>
 text to be parsed</li>
 <li><code>format</code> (optional)
-formatter to use or filename to read format from</li>
+format to use or filename to read format from</li>
 <li><code>cb</code>
 callback will be called with (err, object)</li>
 </ul>
