@@ -1,5 +1,5 @@
 {
-  "name": "alinex-formatter",
+  "name": "alinex-format",
   "version": "1.1.2",
   "description": "Parse and format multiple data serialization types.",
   "copyright": "Alexander Schilling 2016",
@@ -17,12 +17,12 @@
     "properties",
     "ini"
   ],
-  "homepage": "http://alinex.github.io/node-formatter",
+  "homepage": "http://alinex.github.io/node-format",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alinex/node-formatter"
+    "url": "https://github.com/alinex/node-format"
   },
-  "bugs": "https://github.com/alinex/node-formatter/issues",
+  "bugs": "https://github.com/alinex/node-format/issues",
   "author": {
     "name": "Alexander Schilling",
     "email": "info@alinex.de",
