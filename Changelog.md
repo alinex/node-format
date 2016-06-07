@@ -4,6 +4,12 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.1.1 (2016-06-07)
+-------------------------------------------------
+- Announce renaming of package.
+- Enhance test coverage and remove unused code.
+- Run test in verbose mode per default.
+
 Version 1.1.0 (2016-05-31)
 -------------------------------------------------
 - Allow all tests to run.
