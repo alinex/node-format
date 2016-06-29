@@ -33,6 +33,7 @@ exports.parse = (text, options, cb) ->
     emptyTag: null
     ignoreAttrs: options?.ignoreAttrs
     mergeAttrs: true
+    preserveChildrenOrder: true
 #    charkey: 'value'
   , (err, result) ->
     if err
