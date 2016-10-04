@@ -12,9 +12,9 @@ async = require 'async'
 path = require 'path'
 util = require 'util'
 
+
 # Setup
 # -------------------------------------------------
-
 autoDetect = [
   'bson'
   'xml'
@@ -44,20 +44,13 @@ ext2parser =
 
 
 # Format Object into String
-# -------------------------------------------------
-# __Arguments:__
 #
-# * `obj`
-#   object to be formatted
-# * `format`
-#   format to use or filename to read format from
-# * `options` (optional)
-#   specific for the format
-# * `cb`
-#   callback will be called with (err, text)
-
+# @param {Object} obj to be formatted
+# @param {String} format to use or filename to read format from
+# @param {Object} [options] specific for the format
+# @param {Function(Error, String)} cb callback will be called with result
 exports.stringify = (obj, format, options, cb) ->
-  debug "format object as #{format}"
+  debug "format object as #{format}" if debug.enabled
   if typeof options is 'function'
     cb = options
     options = null
@@ -72,22 +65,17 @@ exports.stringify = (obj, format, options, cb) ->
     return cb "Couldn't load #{format} library: #{error.message}"
   # format
   lib.stringify obj, options, (err, text) ->
-    debug chalk.grey "result:\n#{text}"
+    debug chalk.grey "result:\n#{text}" if debug.enabled
     cb err, text
 
-
 # Parse Object from String
-# -------------------------------------------------
+#
 # Try to parse object from string. Auto detect if no format is given.
 #
-# __Arguments:__
-#
-# * `string`
-#   text to be parsed
-# * `format` (optional)
-#   format to use or filename to read format from
-# * `cb`
-#   callback will be called with (err, object)
+# @param {String} text to be parsed
+# @param {String} format to use or filename to read format from
+# @param {Object} [options] specific for the format
+# @param {Function(Error, Object)} cb callback will be called with result
 exports.parse = (text, format, options, cb) ->
   if typeof format is 'function'
     cb = format
@@ -95,7 +83,7 @@ exports.parse = (text, format, options, cb) ->
   if typeof options is 'function'
     cb = options
     options = null
-  debug "start parsing #{format ? 'unknown'} format"
+  debug "start parsing #{format ? 'unknown'} format" if debug.enabled
   # get list of parsers to check
   detect = autoDetect[0..]
   if format?.match /\./
@@ -112,7 +100,7 @@ exports.parse = (text, format, options, cb) ->
   errors = []
   obj = null
   async.detectSeries detect, (format, cb) ->
-    debug chalk.grey "try to parse as #{format}"
+    debug chalk.grey "try to parse as #{format}" if debug.enabled
     # load library
     try
       lib = require "./type/#{format}"
@@ -121,7 +109,7 @@ exports.parse = (text, format, options, cb) ->
     # run parser
     lib.parse text, options, (err, result) ->
       if err
-        debug chalk.grey "#{format}: #{err.message}"
+        debug chalk.grey "#{format}: #{err.message}" if debug.enabled
         errors.push err.message
         return cb()
       obj = result
@@ -129,6 +117,6 @@ exports.parse = (text, format, options, cb) ->
   , (err, result) ->
     return cb err if err
     if result and obj
-      debug chalk.grey "result:\n#{util.inspect obj, {depth: null}}"
+      debug chalk.grey "result:\n#{util.inspect obj, {depth: null}}" if debug.enabled
       return cb null, obj
     cb new Error "Could not parse from #{format ? 'unknown'}:\n#{errors.join '\n'}"
