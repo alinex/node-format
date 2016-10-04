@@ -1,6 +1,6 @@
 {
   "name": "alinex-format",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Parse and format multiple data serialization types.",
   "copyright": "Alexander Schilling 2016",
   "keywords": [
