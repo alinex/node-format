@@ -1,5 +1,37 @@
-# Serializer for ini syntax
-# =================================================
+###
+INI
+===================================================
+This is one of the oldest formats used for configurations. It is very simple but
+allows also complex objects through extended groups.
+
+Common file extension `ini`.
+
+``` ini
+; simple text
+string = test
+
+; add a simple list
+list[] = 1
+list[] = 2
+list[] = 3
+
+; add a group
+[person]
+name = Alexander Schilling
+job = Developer
+
+; add a subgroup
+[city.address]
+name = Stuttgart
+```
+
+Comments start with semicolon and grous/sections are marked by square brackets.
+The group name defines the object to add the properties to.
+
+__Format Options:__
+
+- `whitespace` - `Boolean` should spaces be put arround `=` (defaults to true)
+###
 
 
 # Node Modules
@@ -9,8 +41,12 @@
 ini = require 'ini'
 
 
-# object -> string
+# Implementation
 # -------------------------------------------------
+
+# @param {Object} obj to be formatted
+# @param {Object} [options] format options like described above
+# @param {Function(Error, String)} cb callback will be called with result
 exports.stringify = (obj, options, cb) ->
   try
     text = ini.encode obj,
@@ -19,8 +55,9 @@ exports.stringify = (obj, options, cb) ->
     return cb error
   cb null, text
 
-# string -> object
-# -------------------------------------------------
+# @param {String} text to be parsed
+# @param {Object} [options] not used in this type
+# @param {Function(Error, Object)} cb callback will be called with result
 exports.parse = (text, _, cb) ->
   try
     result = ini.decode text

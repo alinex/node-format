@@ -57,7 +57,8 @@
 # With `indent: 0` the above example would look like:
 #
 # ``` json
-# {"null":null,"boolean":true,"string":"test","number":5.6,"date":"2016-05-10T19:06:36.909Z","list":[1,2,3],"person":{"name":"Alexander Schilling","job":"Developer"}}
+# {"null":null,"boolean":true,"string":"test","number":5.6,"date":"2016-05-10T19:06:36.909Z",
+# "list":[1,2,3],"person":{"name":"Alexander Schilling","job":"Developer"}}
 # ```
 
 
@@ -69,7 +70,6 @@
 # @param {Function(Error, String)} cb callback will be called with result
 exports.stringify = (obj, options, cb) ->
   cb null, JSON.stringify obj, null, options?.indent ? 2
-
 
 # @param {String} text to be parsed
 # @param {Object} [options] not used in this type
