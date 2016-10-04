@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BSON</title>
+    <title>Formats</title>
     <meta name="HandheldFriendly" content="true" />
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -53,11 +53,11 @@
                 <li class="level0">
                   <a href="../../README.md.html" title="Alinex Format: Readme (/README.md)" class="btn btn-primary">Readme</a>
                 </li>
-                <li class="level1">
-                  <a href="index.md.html" title="Formats (/src/type/index.md)" class="btn btn-primary">Formats</a>
+                <li class="active level1">
+                  <a href="index.md.html" title="Formats (/src/type/index.md)" class="btn btn-warning">Formats <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="active level2">
-                  <a href="bson.coffee.html" title="BSON (/src/type/bson.coffee)" class="btn btn-warning">BSON <span class="sr-only">(current)</span></a>
+                <li class="level2">
+                  <a href="bson.coffee.html" title="BSON (/src/type/bson.coffee)" class="btn btn-primary">BSON</a>
                 </li>
                 <li class="level2">
                   <a href="coffee.coffee.html" title="Coffee (/src/type/coffee.coffee)" class="btn btn-primary">Coffee</a>
@@ -114,13 +114,120 @@
 <gcse:searchresults-only></gcse:searchresults-only>
 
           <main><p></p>
-<h1 id="bson">BSON</h1>
-<blockquote>
-<p>Path: <code>/src/type/bson.coffee</code> compiled to <code>/lib/type/bson.js</code></p>
-</blockquote>
-<p>Binary JSON is a more compressed version of JSON but not human readable because it’s a
-binary format. It is mainly used in the MongoDB database.</p>
-<p>Common file extension <code>bson</code>.</p>
+<h1 id="formats">Formats</h1>
+<p>This configuration class allows multiple formats to be used.</p>
+<p>The following table will give a short comparison.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Format</th>
+<th style="text-align:center">Readable</th>
+<th style="text-align:center">Comments</th>
+<th style="text-align:center">Arrays</th>
+<th style="text-align:center">Deep</th>
+<th style="text-align:center">Calc</th>
+<th style="text-align:center">Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">JSON</td>
+<td style="text-align:center">++</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">JS</td>
+<td style="text-align:center">++</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">read</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">CSON</td>
+<td style="text-align:center">+++</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">Coffee</td>
+<td style="text-align:center">+++</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">read</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">YAML</td>
+<td style="text-align:center">+++</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">read</td>
+</tr>
+<tr>
+<td style="text-align:left">INI</td>
+<td style="text-align:center">++</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">Properties</td>
+<td style="text-align:center">++</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">read</td>
+</tr>
+<tr>
+<td style="text-align:left">XML</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">allow</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">BSON</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:left">CSV</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">(no)</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">(yes)</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+</tbody>
+</table>
+<p>Legend: +++ to — = good to bad; no = not possible; allow = allowed but unused;
+read = only red but not written; write = only written but not red; yes = fully
+supported; ? = unknown</p>
+<p>See details for each format below.</p>
+<p>Some of the formats support comments but they won’t read or write them, they
+only will allow them to be there in the file.</p>
 </main>
         </div>
         <div class="col-sm-3 col-cm-pull-9 sidebar">
@@ -131,11 +238,11 @@ binary format. It is mainly used in the MongoDB database.</p>
                 <li class="level0">
                   <a href="../../README.md.html" title="Alinex Format: Readme (/README.md)">Readme</a>
                 </li>
-                <li class="level1">
-                  <a href="index.md.html" title="Formats (/src/type/index.md)">Formats</a>
+                <li class="active level1">
+                  <a href="index.md.html" title="Formats (/src/type/index.md)">Formats <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="active level2">
-                  <a href="bson.coffee.html" title="BSON (/src/type/bson.coffee)">BSON <span class="sr-only">(current)</span></a>
+                <li class="level2">
+                  <a href="bson.coffee.html" title="BSON (/src/type/bson.coffee)">BSON</a>
                 </li>
                 <li class="level2">
                   <a href="coffee.coffee.html" title="Coffee (/src/type/coffee.coffee)">Coffee</a>
