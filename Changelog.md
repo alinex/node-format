@@ -4,6 +4,15 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.1.4 (2016-10-04)
+-------------------------------------------------
+- Completed documentation.
+- Rewrite docs.
+- Updated travis config.
+- Rename links to Alinex Namespace.
+- Add copyright sign.
+- Keep children order in xml parsing,
+
 Version 1.1.3 (2016-06-07)
 -------------------------------------------------
 - Fixing name changes.
