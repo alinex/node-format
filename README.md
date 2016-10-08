@@ -45,7 +45,7 @@ The major features are:
 > following the code standards defined in the [General Docs](https://alinex.github.io/develop).
 
 __Read the complete documentation under
-[https://alinex.github.io/node-codedoc](https://alinex.github.io/node-codedoc).__
+[https://alinex.github.io/node-format](https://alinex.github.io/node-format).__
 <!-- {p: .hidden} -->
 
 
