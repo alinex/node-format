@@ -3,13 +3,15 @@ Alinex Format: Readme
 
 [![GitHub watchers](
   https://img.shields.io/github/watchers/alinex/node-format.svg?style=social&label=Watch&maxAge=2592000)](
-  https://github.com/alinex/node-format/subscription)<!-- {.hidden-small} -->
+  https://github.com/alinex/node-format/subscription)
+<!-- {.hidden-small} -->
 [![GitHub stars](
   https://img.shields.io/github/stars/alinex/node-format.svg?style=social&label=Star&maxAge=2592000)](
   https://github.com/alinex/node-format)
 [![GitHub forks](
   https://img.shields.io/github/forks/alinex/node-format.svg?style=social&label=Fork&maxAge=2592000)](
-  https://github.com/alinex/node-format)<!-- {.hidden-small} -->
+  https://github.com/alinex/node-format)
+<!-- {.hidden-small} -->
 <!-- {p:.right} -->
 
 [![npm package](
@@ -17,7 +19,8 @@ Alinex Format: Readme
   https://www.npmjs.com/package/alinex-format)
 [![latest version](
   https://img.shields.io/npm/l/alinex-format.svg?maxAge=2592000)](
-  #license)<!-- {.hidden-small} -->
+  #license)
+<!-- {.hidden-small} -->
 [![Travis status](
   https://img.shields.io/travis/alinex/node-format.svg?maxAge=2592000&label=develop)](
   https://travis-ci.org/alinex/node-format)
@@ -29,7 +32,8 @@ Alinex Format: Readme
   https://gemnasium.com/alinex/node-format)
 [![GitHub issues](
   https://img.shields.io/github/issues/alinex/node-format.svg?maxAge=2592000)](
-  https://github.com/alinex/node-format/issues)<!-- {.hidden-small} -->
+  https://github.com/alinex/node-format/issues)
+<!-- {.hidden-small} -->
 
 
 This package will give you an easy way to serialize and deserialize different data
