@@ -43,6 +43,7 @@ describe "YAML", ->
     address2: {city: 'Stuttgart'}
     numberString: '123'
     numberString2: '123'
+    re: /\d+/
     picture: new Buffer 'R0lGODdhDQAIAIAAAAAAANnZ2SwAAAAADQAIAAACF4SDGQar3xxbJ9p0qa7R0YxwzaFME1IAADs=', 'base64'
     'Detroit Tigers,Chicago cubs': new Date '2001-07-23'
 

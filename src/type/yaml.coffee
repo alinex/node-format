@@ -65,6 +65,8 @@ lineBreak: >
   The empty line
 
   will be a line break.
+# regular expressions
+re: !! js/regexp /\d+/
 # use references
 address1: &adr001
   city: Stuttgart
@@ -112,7 +114,8 @@ yaml = require 'js-yaml'
 # @param {Function(Error, String)} cb callback will be called with result
 exports.stringify = (obj, options, cb) ->
   try
-    text = yaml.safeDump obj
+    text = yaml.safeDump obj,
+      schema: yaml.DEFAULT_FULL_SCHEMA
 #      indent: options?.indent ? 2
   catch error
     cb new Error(
@@ -127,7 +130,8 @@ exports.stringify = (obj, options, cb) ->
 # @param {Function(Error, Object)} cb callback will be called with result
 exports.parse = (text, _, cb) ->
   try
-    obj = yaml.safeLoad text
+    obj = yaml.safeLoad text,
+      schema: yaml.DEFAULT_FULL_SCHEMA
   catch error
     return cb new Error(
       error.message

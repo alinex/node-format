@@ -62,6 +62,8 @@ address2: *adr001
 numberString: "123"
 numberString2: !!str 123
 #numberFloat: !!float 123
+# regular expression
+re: !!js/regexp /\d+/
 # binary type
 picture: !!binary |
   R0lGODdhDQAIAIAAAAAAANn
