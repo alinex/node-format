@@ -4,6 +4,14 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.2.0 (2017-04-18)
+-------------------------------------------------
+- Updated calls to new bson api.
+- Update cson-parser@1.3.5, async@2.3.0, coffee-script@1.12.5, csv-parse@1.2.0, debug@2.6.3, js-yaml@3.8.3, alinex-builder@2.4.1, bson@1.0.4
+- Add support for js/regexp in yaml.
+- Fix documentation to hide style comments in github view.
+- Fix documentation link.
+
 Version 1.1.5 (2016-10-04)
 -------------------------------------------------
 - Fix test to run also in older nodejs.
